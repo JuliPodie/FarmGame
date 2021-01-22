@@ -17,11 +17,12 @@ public class Save {
 	static int saveMetal;
 	static int saveHay;
 	static int saveLvlChicken;
-	static int saveLvlPig;
+	static int saveLvlSheep;
 	static int saveLvlCow;
 	static int saveAmtChicken;
-	static int saveAmtPig;
+	static int saveAmtSheep;
 	static int saveAmtCow;
+	static int saveEegs;
 
 	public static void saveFile() {
 		try (FileWriter fw = new FileWriter(path);
@@ -48,7 +49,7 @@ public class Save {
 				bw.write(Integer.toString(saveLvlChicken));
 				bw.newLine();
 				
-				bw.write(Integer.toString(saveLvlPig));
+				bw.write(Integer.toString(saveLvlSheep));
 				bw.newLine();
 				
 				bw.write(Integer.toString(saveLvlCow));
@@ -57,10 +58,13 @@ public class Save {
 				bw.write(Integer.toString(saveAmtChicken));
 				bw.newLine();
 				
-				bw.write(Integer.toString(saveAmtPig));
+				bw.write(Integer.toString(saveAmtSheep));
 				bw.newLine();
 				
 				bw.write(Integer.toString(saveAmtCow));
+				bw.newLine();
+				
+				bw.write(Integer.toString(saveEegs));
 				bw.newLine();
 				
 				bw.close();
@@ -80,11 +84,12 @@ public class Save {
 				saveMetal = Integer.parseInt(br.readLine());
 				saveHay = Integer.parseInt(br.readLine());
 				saveLvlChicken = Integer.parseInt(br.readLine());
-				saveLvlPig = Integer.parseInt(br.readLine());
+				saveLvlSheep = Integer.parseInt(br.readLine());
 				saveLvlCow = Integer.parseInt(br.readLine());
 				saveAmtChicken = Integer.parseInt(br.readLine());
-				saveAmtPig = Integer.parseInt(br.readLine());
+				saveAmtSheep = Integer.parseInt(br.readLine());
 				saveAmtCow = Integer.parseInt(br.readLine());
+				saveEegs = Integer.parseInt(br.readLine());
 				
 				br.close();
 		} catch (IOException e) {
