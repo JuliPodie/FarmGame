@@ -23,7 +23,7 @@ public class User {
 		if (newGame) {
 			Money = 100;
 			Lvl = 1;
-			Wood = 0;
+			Wood = 3;
 			Metal = 0;
 			Hay = 10;
 			LvlChicken = 1;
@@ -46,6 +46,9 @@ public class User {
 			LvlCow = Save.saveWood;
 			Eegs = Save.saveEegs;
 			Name = Save.saveName;
+			AmtChicken = Save.saveAmtChicken;
+			AmtSheep = Save.saveAmtSheep;
+			AmtCow = Save.saveAmtCow;
 		}
 	}
 	 
