@@ -11,7 +11,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class EventController {
-	Zeitgeber derTimer;
+	Zeitgeber EierUhr;
+	Zeitgeber sheepTimer;
 	Boolean newGame = true;
 
 	void start() {
@@ -72,8 +73,12 @@ public class EventController {
 	}
 
 	public void initialize() {
-		derTimer = new Zeitgeber(this, 1000);
-		derTimer.starte();
+		EierUhr = new Zeitgeber(this, 1000);
+		EierUhr.starte();
+		sheepTimer = new Zeitgeber(this, 5000);
+		
+		
+		
 		player = new User(newGame);
 		String[] itemName = { ("Wood:\t" + player.getWood()), ("Hay:\t\t" + player.getHay()),
 				("Eegs:\t" + player.getEegs()) };
@@ -109,7 +114,7 @@ public class EventController {
 
 	public void tickTimer() {
 		imgEeg.setVisible(true);
-		derTimer.stoppe();
+		EierUhr.stoppe();
 	}
 
 	public void collectEgg() {
@@ -117,11 +122,22 @@ public class EventController {
 			int eggmultiplayer = player.getEegs() + 1 * player.getAmtChicken() * player.getLvlChicken();
 			player.setEegs(eggmultiplayer);
 			imgEeg.setVisible(false);
-			derTimer.starte();
+			EierUhr.starte();
 			lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
 		}
 	}
 
+	public void collectWoll() {
+		if (imgEeg.isVisible()) {
+			int eggmultiplayer = player.getEegs() + 1 * player.getAmtChicken() * player.getLvlChicken();
+			player.setEegs(eggmultiplayer);
+			imgEeg.setVisible(false);
+			EierUhr.starte();
+			lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
+		}
+	}
+	
+	
 	public void buildSheep() {
 		if (player.getWood() >= 3) {
 			woodCow.setVisible(true);
@@ -133,6 +149,8 @@ public class EventController {
 
 			player.setWood(player.getWood() - 3);
 			lw.getItems().set(0, ("Wood:\t" + player.getWood()));
+			
+			//sheepTimer.starte();
 		}
 	}
 
