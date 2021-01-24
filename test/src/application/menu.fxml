@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Pane prefHeight="500.0" prefWidth="800.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="GAMENAMEPOG">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="PLAY" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="300.0" layoutY="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="OPTIONS">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane prefHeight="500.0" prefWidth="800.0">
+               <children>
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="Game">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Button alignment="CENTER" layoutX="121.0" layoutY="276.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="CONTINUE" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="500.0" layoutY="276.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="NEW GAME">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

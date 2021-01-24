@@ -27,6 +27,23 @@ public class Main extends Application {
 		
 	}
 	
+	public void startMenu(Stage menuStage) throws Exception {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
+			Scene scene = new Scene(root,640,400);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			menuStage.setTitle("Anminal Crossing in schlecht");
+			menuStage.setScene(scene);
+			menuStage.show();
+			root.requestFocus();
+			menuStage.setResizable(false);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		EventController e = new EventController();
 		e.start();
