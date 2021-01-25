@@ -18,29 +18,40 @@ public class User {
 	private int metal;
 	private int hay;
 	private int eggs;
+	private int milk;
 	private int lvlChicken;
 	private int lvlSheep;
 	private int lvlCow;
 	private int amtChicken;
 	private int amtSheep;
 	private int amtCow;
-	 
+	private int wool;
+
+	private int colEggs;
+	private int colWool;
+	private int colMilk;
+	
 	 public User() {
 		loadFile();
 		if (name.contentEquals("NewGame")) {
+			milk = 0;
+			colEggs = 0;
+			colWool = 0;
+			setColMilk(0);
 			newGame = true;
 			money = 9000;
 			lvl = 1;
 			wood = 3;
-            metal = 0;
+            metal = 3;
             hay = 10;
-            eggs = 1;
+            eggs = 0;
             lvlChicken = 1;
             lvlSheep = 1;
-            lvlCow = 0;
+            lvlCow = 1;
             amtChicken=1;
             amtSheep=0;
             amtCow =0;	
+            wool =0;
 		}
 	}
 	 
@@ -221,4 +232,46 @@ public class User {
 	public void setAmtCow(int amtCow) {
 		this.amtCow = amtCow;
 	}
+
+	public int getWool() {
+		return wool;
+	}
+
+	public void setWool(int wool) {
+		this.wool = wool;
+	}
+
+	public int getColEggs() {
+		return colEggs;
+	}
+
+	public void setColEggs(int colEggs) {
+		this.colEggs = colEggs;
+	}
+
+	public int getColWool() {
+		return colWool;
+	}
+
+	public void setColWool(int colWool) {
+		this.colWool = colWool;
+	}
+
+	public int getMilk() {
+		return milk;
+	}
+
+	public void setMilk(int milk) {
+		this.milk = milk;
+	}
+
+	public int getColMilk() {
+		return colMilk;
+	}
+
+	public void setColMilk(int colMilk) {
+		this.colMilk = colMilk;
+	}
+
+
 }

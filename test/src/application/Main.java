@@ -58,7 +58,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public void startGame(Stage primaryStage) throws Exception {
+	/*public void startGame(Stage primaryStage) throws Exception {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
 			Scene scene = new Scene(root,640,400);
@@ -73,7 +73,7 @@ public class Main extends Application {
 			e.printStackTrace();
 			error(2);
 		}
-	}
+	}*/
 	
 	static void error(int reason)	{		//handles all error windows
 	
