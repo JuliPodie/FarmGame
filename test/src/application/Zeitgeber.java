@@ -8,10 +8,10 @@ import javax.swing.Timer;
 public class Zeitgeber implements ActionListener {
 	
 	private int dasIntervall;
-	private EventController dieSteuerung;
+	private GameController dieSteuerung;
 	private Timer t;
 	
-	public Zeitgeber(EventController eventController, int pIntervall){
+	public Zeitgeber(GameController eventController, int pIntervall){
 		
 		dieSteuerung = eventController;
 		dasIntervall = pIntervall;

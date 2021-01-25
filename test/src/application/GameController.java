@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
-public class EventController {
+public class GameController {
 	Zeitgeber EierUhr;
 	Zeitgeber sheepTimer;
 	Boolean newGame = true;
@@ -22,7 +22,8 @@ public class EventController {
 
 	ObservableList<String> list = FXCollections.observableArrayList();
 
-	User player;
+	static User player;
+	
 
 	@FXML
 	Button btnSale;
@@ -77,11 +78,8 @@ public class EventController {
 		EierUhr.starte();
 		sheepTimer = new Zeitgeber(this, 5000);
 		
-		
-		
-		player = new User(newGame);
 		String[] itemName = { ("Wood:\t" + player.getWood()), ("Hay:\t\t" + player.getHay()),
-				("Eegs:\t" + player.getEegs()) };
+				("Eegs:\t" + player.getEggs()) };
 		startGame(itemName);
 
 	}
@@ -119,21 +117,21 @@ public class EventController {
 
 	public void collectEgg() {
 		if (imgEeg.isVisible()) {
-			int eggmultiplayer = player.getEegs() + 1 * player.getAmtChicken() * player.getLvlChicken();
-			player.setEegs(eggmultiplayer);
+			int eggmultiplayer = player.getEggs() + 1 * player.getAmtChicken() * player.getLvlChicken();
+			player.setEggs(eggmultiplayer);
 			imgEeg.setVisible(false);
 			EierUhr.starte();
-			lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
+			lw.getItems().set(2, ("Eegs:\t" + player.getEggs()));
 		}
 	}
 
 	public void collectWoll() {
 		if (imgEeg.isVisible()) {
-			int eggmultiplayer = player.getEegs() + 1 * player.getAmtChicken() * player.getLvlChicken();
-			player.setEegs(eggmultiplayer);
+			int eggmultiplayer = player.getEggs() + 1 * player.getAmtChicken() * player.getLvlChicken();
+			player.setEggs(eggmultiplayer);
 			imgEeg.setVisible(false);
 			EierUhr.starte();
-			lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
+			lw.getItems().set(2, ("Eegs:\t" + player.getEggs()));
 		}
 	}
 	
@@ -159,12 +157,12 @@ public class EventController {
 
 		switch (temp) {
 		case "E":
-			if (player.getEegs() >= 1) {
-				player.setEegs(player.getEegs() - 1);
+			if (player.getEggs() >= 1) {
+				player.setEggs(player.getEggs() - 1);
 				player.setMoney(player.getMoney() + 10);
 
 				moneyLabel.setText(player.getMoney() + "€");
-				lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
+				lw.getItems().set(2, ("Eegs:\t" + player.getEggs()));
 			}
 			break;
 
@@ -195,11 +193,11 @@ public class EventController {
 		switch (temp) {
 		case "E":
 			if (player.getMoney() >= 15) {
-				player.setEegs(player.getEegs() + 1);
+				player.setEggs(player.getEggs() + 1);
 				player.setMoney(player.getMoney() - 15);
 
 				moneyLabel.setText(player.getMoney() + "€");
-				lw.getItems().set(2, ("Eegs:\t" + player.getEegs()));
+				lw.getItems().set(2, ("Eegs:\t" + player.getEggs()));
 			}
 			break;
 

@@ -7,44 +7,91 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Pane prefHeight="500.0" prefWidth="800.0" visible="false">
+            <Pane fx:id="paneMain" prefHeight="500.0" prefWidth="800.0">
                <children>
-                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="GAMENAMEPOG">
+                  <Label fx:id="lblMain" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="GAMENAMEPOG">
                      <font>
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="PLAY" textAlignment="CENTER">
+                  <Button fx:id="btnMainPlay" alignment="CENTER" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="50.0" prefWidth="200.0" text="PLAY" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="300.0" layoutY="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="OPTIONS">
+                  <Button fx:id="btnMainOpt" alignment="CENTER" layoutX="300.0" layoutY="300.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="50.0" prefWidth="200.0" text="OPTIONS">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
-            <Pane prefHeight="500.0" prefWidth="800.0">
+            <Pane fx:id="paneGame" prefHeight="500.0" prefWidth="800.0" visible="false">
                <children>
-                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="Game">
+                  <Label fx:id="lblGame" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="GAME">
                      <font>
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Button alignment="CENTER" layoutX="121.0" layoutY="276.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="CONTINUE" textAlignment="CENTER">
+                  <Label fx:id="lblGameName" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="123.0" prefHeight="50.0" prefWidth="400.0" text="Name">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnGameContinue" alignment="CENTER" layoutX="130.0" layoutY="250.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="CONTINUE" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" layoutX="500.0" layoutY="276.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="NEW GAME">
+                  <Button fx:id="btnGameNew" alignment="CENTER" layoutX="470.0" layoutY="250.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="50.0" prefWidth="200.0" text="NEW GAME">
                      <font>
                         <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnGameBack" alignment="CENTER" layoutX="310.0" layoutY="400.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="40.0" prefWidth="180.0" text="BACK" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneNew" prefHeight="500.0" prefWidth="800.0" visible="false">
+               <children>
+                  <Label fx:id="lblNew" alignment="CENTER" graphicTextGap="0.0" layoutX="100.0" layoutY="50.0" prefHeight="50.0" prefWidth="600.0" text="CHOSE YOUR NAME">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNewName" alignment="CENTER" layoutX="250.0" layoutY="175.0" prefHeight="50.0" prefWidth="300.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font></TextField>
+                  <Button fx:id="btnNewContinue" alignment="CENTER" layoutX="300.0" layoutY="300.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="CONTINUE" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnNewBack" alignment="CENTER" layoutX="310.0" layoutY="400.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="40.0" prefWidth="180.0" text="BACK" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneOpt" prefHeight="500.0" prefWidth="800.0" visible="false">
+               <children>
+                  <Label fx:id="lblOpt" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="50.0" prefHeight="50.0" prefWidth="400.0" text="OPTIONEN">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnOptBack" alignment="CENTER" layoutX="310.0" layoutY="400.0" mnemonicParsing="false" onAction="#loadMenu" prefHeight="40.0" prefWidth="180.0" text="BACK" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Button>
                </children>

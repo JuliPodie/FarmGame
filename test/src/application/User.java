@@ -1,137 +1,224 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class User {
 	
-	 private String Name;
-	 private int Money;
-	 private int Lvl;
-	 private int Wood;
-	 private int Metal;
-	 private int Hay;
-	 private int LvlChicken;
-	 private int LvlSheep;
-	 private int LvlCow;
-	 private int Eegs;
-	 private int AmtChicken;
-	 private int AmtSheep;
-	 private int AmtCow;
+	static String path = "src/Save/Save.txt";
+	boolean newGame = false;
+	
+	private String name;
+	private int money;
+	private int lvl;
+	private int wood;
+	private int metal;
+	private int hay;
+	private int eggs;
+	private int lvlChicken;
+	private int lvlSheep;
+	private int lvlCow;
+	private int amtChicken;
+	private int amtSheep;
+	private int amtCow;
 	 
-	 
-	 
-	 
-	 public User(Boolean newGame) {
-		if (newGame) {
-			Money = 100;
-			Lvl = 1;
-			Wood = 3;
-			Metal = 0;
-			Hay = 10;
-			LvlChicken = 1;
-			LvlSheep = 1;
-			LvlCow = 1;
-			Eegs = 0;
-			AmtChicken=1;
-			AmtSheep=0;
-			AmtCow =0;
-			
-		} else {
-			Save.loadFile();
-			Money = Save.saveMoney;
-			Lvl = Save.saveLvl;
-			Wood = Save.saveWood;
-			Metal = Save.saveMetal;
-			Hay = Save.saveHay;
-			LvlChicken = Save.saveLvlChicken;
-			LvlSheep = Save.saveLvlSheep;
-			LvlCow = Save.saveWood;
-			Eegs = Save.saveEegs;
-			Name = Save.saveName;
-			AmtChicken = Save.saveAmtChicken;
-			AmtSheep = Save.saveAmtSheep;
-			AmtCow = Save.saveAmtCow;
+	 public User() {
+		loadFile();
+		if (name.contentEquals("NewGame")) {
+			newGame = true;
+			money = 9000;
+			lvl = 1;
+			wood = 3;
+            metal = 0;
+            hay = 10;
+            eggs = 1;
+            lvlChicken = 1;
+            lvlSheep = 1;
+            lvlCow = 0;
+            amtChicken=1;
+            amtSheep=0;
+            amtCow =0;	
 		}
 	}
 	 
-	 
+	 public void saveFile() {
+		 try (FileWriter fw = new FileWriter(path);
+				 BufferedWriter bw = new BufferedWriter(fw);){
+								
+			 bw.write(this.getName());
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(money));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(lvl));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(wood));
+			 bw.newLine();
+
+			 bw.write(Integer.toString(metal));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(hay));
+			 bw.newLine();
+				
+			 bw.write(Integer.toString(eggs));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(lvlChicken));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(lvlSheep));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(lvlCow));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(amtChicken));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(amtSheep));
+			 bw.newLine();
+					
+			 bw.write(Integer.toString(amtCow));
+			 bw.newLine();
+					
+			 fw.close();
+			 bw.close();
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 }
+	 }
+		
+	 public void loadFile() {
+		 try (FileReader fr = new FileReader(path);
+				 BufferedReader br = new BufferedReader(fr);){
+				
+			 name = br.readLine();
+			 money = Integer.parseInt(br.readLine());
+			 lvl = Integer.parseInt(br.readLine());
+			 wood = Integer.parseInt(br.readLine());
+			 metal = Integer.parseInt(br.readLine());
+			 hay = Integer.parseInt(br.readLine());
+			 eggs = Integer.parseInt(br.readLine());
+			 lvlChicken = Integer.parseInt(br.readLine());
+			 lvlSheep = Integer.parseInt(br.readLine());
+			 lvlCow = Integer.parseInt(br.readLine());
+			 amtChicken = Integer.parseInt(br.readLine());
+			 amtSheep = Integer.parseInt(br.readLine());
+			 amtCow = Integer.parseInt(br.readLine());
+
+			 fr.close();
+			 br.close();
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 }
+	 }
 	 
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
+
 	public int getMoney() {
-		return Money;
+		return money;
 	}
+
 	public void setMoney(int money) {
-		Money = money;
+		this.money = money;
 	}
+
 	public int getLvl() {
-		return Lvl;
+		return lvl;
 	}
+
 	public void setLvl(int lvl) {
-		Lvl = lvl;
+		this.lvl = lvl;
 	}
+
 	public int getWood() {
-		return Wood;
+		return wood;
 	}
+
 	public void setWood(int wood) {
-		Wood = wood;
+		this.wood = wood;
 	}
+
 	public int getMetal() {
-		return Metal;
+		return metal;
 	}
+
 	public void setMetal(int metal) {
-		Metal = metal;
+		this.metal = metal;
 	}
+
 	public int getHay() {
-		return Hay;
+		return hay;
 	}
+
 	public void setHay(int hay) {
-		Hay = hay;
+		this.hay = hay;
 	}
+	
+	public int getEggs() {
+		return eggs;
+	}
+
+	public void setEggs(int eggs) {
+		this.eggs = eggs;
+	}
+
 	public int getLvlChicken() {
-		return LvlChicken;
+		return lvlChicken;
 	}
+
 	public void setLvlChicken(int lvlChicken) {
-		LvlChicken = lvlChicken;
+		this.lvlChicken = lvlChicken;
 	}
+
 	public int getLvlSheep() {
-		return LvlSheep;
+		return lvlSheep;
 	}
+
 	public void setLvlSheep(int lvlSheep) {
-		LvlSheep = lvlSheep;
+		this.lvlSheep = lvlSheep;
 	}
+
 	public int getLvlCow() {
-		return LvlCow;
+		return lvlCow;
 	}
+
 	public void setLvlCow(int lvlCow) {
-		LvlCow = lvlCow;
+		this.lvlCow = lvlCow;
 	}
+
 	public int getAmtChicken() {
-		return AmtChicken;
+		return amtChicken;
 	}
+
 	public void setAmtChicken(int amtChicken) {
-		AmtChicken = amtChicken;
+		this.amtChicken = amtChicken;
 	}
+
 	public int getAmtSheep() {
-		return AmtSheep;
+		return amtSheep;
 	}
+
 	public void setAmtSheep(int amtSheep) {
-		AmtSheep = amtSheep;
+		this.amtSheep = amtSheep;
 	}
+
 	public int getAmtCow() {
-		return AmtCow;
+		return amtCow;
 	}
+
 	public void setAmtCow(int amtCow) {
-		AmtCow = amtCow;
+		this.amtCow = amtCow;
 	}
-	public int getEegs() {
-		return Eegs;
-	}
-	public void setEegs(int eegs) {
-		Eegs = eegs;
-	}
-
-
 }
