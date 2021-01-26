@@ -1,11 +1,12 @@
 package application;
 
+import javafx.scene.Node;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -13,53 +14,38 @@ import javafx.scene.text.Text;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.Timer;
 
-public class GameController implements ActionListener {
-	Timer EierUhr;
-	Timer sheepTimer;
-	Timer cowTimer;
+public class GameController implements ActionListener{
+	
+	Timer EierUhr = new Timer(1000, this);
+	Timer sheepTimer = new Timer(5000, this);
+	Timer cowTimer = new Timer(7500, this);;
+	
 	Boolean newGame = true;
 
 	ObservableList<String> list = FXCollections.observableArrayList();
 
 	static User player;
-
-	@FXML
-	Button btnSale;
-	@FXML
-	Button btnBuy;
-
-	public Text txtName, txtCow;
-	@FXML
-	Text woodSheep;
-	@FXML
-	Text sheepR;
-	@FXML
-	Text moneyLabel;
-	@FXML
-	Text woodCow;
-	@FXML
-	Text metalCow;
-	@FXML
-	ImageView sheep;
-	@FXML
-	ImageView imgV1;
-	@FXML
-	ImageView imgV2;
-	@FXML
-	ImageView imgV3;
-	@FXML
-	ImageView imgV4;
-	@FXML
-	ImageView imgV5;
-	@FXML
-	ListView<String> lw;
-	@FXML
-	ImageView imgEeg;
-
-	public ImageView imgWolle, cow, imgMilk;
+	
+	public Pane paneMain, paneTop, paneHome, paneOpt, paneHelp, paneSheep, paneCow, paneChicken, paneDog, paneHorse;
+	
+	public Label lblTopName, lblTopLvl, lblGameSheep, lblGameCow, lblGameChicken, lblGameDog, lblGameHorse, lblGameMoney, lblGameWood, lblGameMetal, lblGameHay, lblGameEgg, lblGameWool, lblGameMilk;
+	
+	public Button btnGameHome, btnGameOpt, btnGameHelp, btnOptOpt, btnOptSave, btnOptExit, btnHomeShop;
+	
+	public ImageView imgGameSheep, imgGameSheepProd, imgGameCow, imgGameCowProd, imgGameChicken, imgGameChickenProd, imgGameDog, imgGameHorse, 
+						imgGameMoney, imgGameWood, imgGameMetal, imgGameHay, imgGameEgg, imgGameWool, imgGameMilk;
+	
+	public ProgressBar prgTopLvl, prgGameSheep, prgGameCow, prgGameChicken, prgGameDog, prgGameHorse;
+	
+	public Image imgScrew, imgSheep, imgCow, imgChicken, imgMoney, imgWood, imgMetal, imgHay, imgEgg, imgWool, imgMilk;
+	
+	public Text t;
+	
+	public ListView<String> lw;
 
 	@FXML
 	void keyPressed(KeyEvent event) {
@@ -76,58 +62,114 @@ public class GameController implements ActionListener {
 			break;
 		}
 	}
-
+	
 	public void initialize() {
-		EierUhr = new Timer(1000, this);
-		EierUhr.start();
-		sheepTimer = new Timer(5000, this);
-		cowTimer = new Timer(7500, this);
+		System.out.println("s");
+		
+		imgScrew = new Image("/icons/srewdriver.png");
+		imgSheep = new Image("/icons/sheep.png");
+		imgCow = new Image("/icons/cow.png");
+		imgChicken = new Image("/icons/chicken.png");
+		imgMoney = new Image("/icons/money.png");
+		imgWood = new Image("/icons/wood.png");
+		imgMetal = new Image("/icons/metal.png");
+		imgHay = new Image("/icons/hay.png");
+		imgEgg = new Image("/icons/egg.png");
+		imgWool = new Image("/icons/wool.png");
+		imgMilk = new Image("/icons/milk.png");
+		
+		
+		imgGameChicken.setImage(imgScrew);
+		imgGameChicken.setVisible(true);
+		imgGameChickenProd.setImage(imgEgg);
+		imgGameChickenProd.setVisible(false);
+		
+		imgGameSheep.setImage(imgScrew);
+		imgGameSheep.setVisible(true);
+		imgGameSheepProd.setImage(imgWool);
+		imgGameSheepProd.setVisible(false);
 
-		String[] itemName = { ("Wood:\t" + player.getWood()), ("Hay:\t\t" + player.getHay()),
-				("Eggs:\t" + player.getEggs()) };
-		startGame(itemName);
-
+		imgGameCow.setImage(imgScrew);
+		imgGameCow.setVisible(true);
+		imgGameCowProd.setImage(imgMilk);
+		imgGameCowProd.setVisible(false);
+		
+		imgGameDog.setImage(imgScrew);
+		imgGameDog.setVisible(true);
+		
+		imgGameHorse.setImage(imgScrew);
+		imgGameHorse.setVisible(true);
+		
+		//--------------------------
+		
+		lblGameSheep.setText("Sheep");
+		lblGameCow.setText("Cow");
+		lblGameChicken.setText("Chicken");
+		lblGameDog.setText("Dog");
+		lblGameHorse.setText("Horse");
+		
+		prgGameSheep.setVisible(false);
+		prgGameCow.setVisible(false);
+		prgGameChicken.setVisible(false);
+		prgGameDog.setVisible(false);
+		prgGameHorse.setVisible(false);
+		
+		lblTopName.setText(player.getName());
+		lblTopLvl.setText(player.getLvlS());
+		
+		lblGameMoney.setText(player.getMoneyS());
+		lblGameWood.setText(player.getWoodS());
+		lblGameMetal.setText(player.getMetalS());
+		lblGameHay.setText(player.getHayS());
+		lblGameEgg.setText(player.getEggS());
+		lblGameWool.setText(player.getWoolS());
+		lblGameMilk.setText(player.getMilkS());
+		
+		imgGameMoney.setImage(imgMoney);
+		imgGameWood.setImage(imgWood);
+		imgGameMetal.setImage(imgMetal);
+		imgGameHay.setImage(imgHay);
+		imgGameEgg.setImage(imgEgg);
+		imgGameWool.setImage(imgWool);
+		imgGameMilk.setImage(imgMilk);
+		
 	}
-
-	private void startGame(String[] itemName) {
-		Image img = new Image("/icons/srewdriver.png");
-
-		moneyLabel.setText(player.getMoney() + "€");
-		txtName.setText(player.getName());
-
-		btnSale.setDisable(true);
-		btnBuy.setDisable(true);
-		woodCow.setVisible(false);
-		metalCow.setVisible(false);
-
-		sheep.setImage(new Image("/icons/Mah.png"));
-		sheep.setVisible(false);
-		imgWolle.setImage(new Image("/icons/Weiße_Wolle.png"));
-		imgWolle.setVisible(false);
-
-		cow.setImage(new Image("/icons/Muh.png"));
-		cow.setVisible(false);
-		imgMilk.setImage(new Image("/icons/Milcheimer.png"));
-		imgMilk.setVisible(false);
-
-		imgV1.setImage(img);
-		imgV2.setImage(img);
-		imgV3.setImage(img);
-		imgV4.setImage(img);
-		imgV5.setImage(new Image("/icons/Quack.png"));
-		imgEeg.setImage(new Image("/icons/eeg.png"));
-		imgEeg.setVisible(false);
-		list.removeAll(list);
-		list.addAll(itemName[0], itemName[1], itemName[2]);
-		lw.getItems().addAll(list);
-
+	
+	public void startGame() {
+				
+		
 	}
+	public void loadPanes(ActionEvent e) throws IOException {
+		String id = ((Node) e.getSource()).getId();
+		
+		switch(id) {
+			case "btnGameHome":
+				if(paneHome.isVisible()) {
+					paneHome.setVisible(false);
+				}else paneHome.setVisible(true);
+				break;
+				
+			case "btnGameOpt":
+				if(paneOpt.isVisible()) {
+					paneOpt.setVisible(false);
+				}else paneOpt.setVisible(true);
+				break;
+				
+			case "btnGameHelp": 
+				if(paneHelp.isVisible()) {
+					paneHelp.setVisible(false);
+				}else paneHelp.setVisible(true);
+				break;
+		}
+	} 
 
 	public void collectEgg() {
-		if (imgEeg.isVisible()) {
+		
+		/*
+		if (imgGameChickenProd.isVisible()) {
 			int eggmultiplayer = player.getEggs() + 1 * player.getAmtChicken() * player.getLvlChicken();
 			player.setEggs(eggmultiplayer);
-			imgEeg.setVisible(false);
+			imgGameChickenProd.setVisible(false);
 			EierUhr.start();
 			lw.getItems().set(2, ("Eggs:\t" + player.getEggs()));
 			player.setColEggs(player.getColEggs() + 1);
@@ -136,14 +178,16 @@ public class GameController implements ActionListener {
 				player.setLvl(player.getLvl() + 1);
 				player.setColEggs(0);
 			}
-		}
+		} */
 	}
 
 	public void collectWoll() {
-		if (imgWolle.isVisible()) {
+		
+		/*
+		if (imgGameSheepProd.isVisible()) {
 			int woolMultiplayer = player.getWool() + 1 * player.getAmtSheep() * player.getLvlSheep();
 			player.setWool(woolMultiplayer);
-			imgWolle.setVisible(false);
+			imgGameSheepProd.setVisible(false);
 
 			lw.getItems().set(3, ("Wool:\t" + player.getWool()));
 			sheepTimer.start();
@@ -153,14 +197,15 @@ public class GameController implements ActionListener {
 				player.setLvl(player.getLvl() + 1);
 				player.setColWool(0);
 			}
-		}
+		} */
 	}
 
 	public void collectMilk() {
-		if (imgMilk.isVisible()) {
+		/*
+		if (imgGameCowProd.isVisible()) {
 			int milkMultiplayer = player.getMilk() + 1 * player.getAmtCow() * player.getLvlCow();
 			player.setMilk(milkMultiplayer);
-			imgMilk.setVisible(false);
+			imgGameCowProd.setVisible(false);
 
 			lw.getItems().set(5, ("Milk:\t\t" + player.getMilk()));
 			cowTimer.start();
@@ -171,17 +216,18 @@ public class GameController implements ActionListener {
 				player.setColMilk(0);
 			}
 			System.out.println(player.getMilk());
-		}
+		} */
 	}
 
 	public void buildSheep() {
+		/*
 		if (player.getWood() >= 3) {
-			woodCow.setVisible(true);
-			metalCow.setVisible(true);
-			imgV2.setVisible(false);
-			sheep.setVisible(true);
-			sheepR.setVisible(false);
-			woodSheep.setVisible(false);
+			//woodCow.setVisible(true);
+			//metalCow.setVisible(true);
+			//imgV2.setVisible(false);
+			imgGameSheep.setVisible(true);
+			//sheepR.setVisible(false);
+			//woodSheep.setVisible(false);
 
 			player.setWood(player.getWood() - 3);
 			lw.getItems().set(0, ("Wood:\t" + player.getWood()));
@@ -192,17 +238,18 @@ public class GameController implements ActionListener {
 			lw.getItems().add("Metal:\t" + player.getMetal());
 
 			sheepTimer.start();
-		}
+		} */
 	}
 
 	public void buildCow() {
+		/*
 		if (player.getWood() >= 3 && player.getMetal() >= 3) {
 
-			woodCow.setVisible(false);
-			metalCow.setVisible(false);
-			imgV4.setVisible(false);
-			cow.setVisible(true);
-			txtCow.setVisible(false);
+//			woodCow.setVisible(false);
+//			metalCow.setVisible(false);
+//			imgV4.setVisible(false);
+			imgGameCow.setVisible(true);
+//			txtCow.setVisible(false);
 
 			player.setWood(player.getWood() - 3);
 			lw.getItems().set(0, ("Wood:\t" + player.getWood()));
@@ -215,10 +262,12 @@ public class GameController implements ActionListener {
 			lw.getItems().add("Milk:\t\t" + player.getMilk());
 
 			cowTimer.start();
-		}
+		} */
 	}
 
 	public void saleHandler() {
+		
+		/*
 		String temp = item.substring(0, 4);
 
 		switch (temp) {
@@ -227,7 +276,7 @@ public class GameController implements ActionListener {
 				player.setEggs(player.getEggs() - 1);
 				player.setMoney(player.getMoney() + 10);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//lblGameMoney.setText(player.getMoney());
 				lw.getItems().set(2, ("Eggs:\t" + player.getEggs()));
 			}
 			break;
@@ -237,7 +286,7 @@ public class GameController implements ActionListener {
 				player.setHay(player.getHay() - 1);
 				player.setMoney(player.getMoney() + 5);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//lblGameMoney.setText(player.getMoney() + "€");
 				lw.getItems().set(1, ("Hay:\t\t" + player.getHay()));
 			}
 			break;
@@ -246,7 +295,7 @@ public class GameController implements ActionListener {
 				player.setWood(player.getWood() - 1);
 				player.setMoney(player.getMoney() + 50);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 				lw.getItems().set(0, ("Wood:\t" + player.getWood()));
 			}
 			break;
@@ -255,15 +304,17 @@ public class GameController implements ActionListener {
 				player.setWool(player.getWool() - 1);
 				player.setMoney(player.getMoney() + 75);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 				lw.getItems().set(3, ("Wool:\t" + player.getWool()));
 			}
 			break;
 		}
-
+		*/
 	}
 
 	public void buyHandler() {
+		
+		/*
 		String temp = item.substring(0, 1);
 		switch (temp) {
 		case "E":
@@ -271,7 +322,7 @@ public class GameController implements ActionListener {
 				player.setEggs(player.getEggs() + 1);
 				player.setMoney(player.getMoney() - 15);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 				lw.getItems().set(2, ("Eegs:\t" + player.getEggs()));
 			}
 			break;
@@ -281,7 +332,7 @@ public class GameController implements ActionListener {
 				player.setHay(player.getHay() + 1);
 				player.setMoney(player.getMoney() - 10);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 				lw.getItems().set(1, ("Hay:\t\t" + player.getHay()));
 			}
 			break;
@@ -290,7 +341,7 @@ public class GameController implements ActionListener {
 				player.setWood(player.getWood() + 1);
 				player.setMoney(player.getMoney() - 100);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 
 				lw.getItems().set(0, ("Wood:\t" + player.getWood()));
 			}
@@ -300,39 +351,40 @@ public class GameController implements ActionListener {
 				player.setWool(player.getWool() + 1);
 				player.setMoney(player.getMoney() - 150);
 
-				moneyLabel.setText(player.getMoney() + "€");
+				//moneyLabel.setText(player.getMoney() + "€");
 				lw.getItems().set(3, ("Wool:\t" + player.getWool()));
 			}
 			break;
-		}
+		} */
 	}
 
 	private String item;
 
 	public void listHandler() {
+		
+		/*
 		item = lw.getSelectionModel().getSelectedItem();
 		if (item == null || item.isEmpty()) {
 			return;
 		} else {
 
-			btnSale.setDisable(false);
-			btnBuy.setDisable(false);
+			//btnSale.setDisable(false);
+			//btnBuy.setDisable(false);
 
 		}
-
+		*/
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == sheepTimer) {
-			imgWolle.setVisible(true);
+			imgGameSheepProd.setVisible(true);
 			sheepTimer.stop();
-		} else if (e.getSource() == EierUhr) {
-			System.out.println("spawnegg");
-			imgEeg.setVisible(true);
-			EierUhr.stop();
 		} else if (e.getSource() == cowTimer) {
-			imgMilk.setVisible(true);
+			imgGameCowProd.setVisible(true);
+			EierUhr.stop();
+		} else if (e.getSource() == EierUhr) {
+			imgGameChickenProd.setVisible(true);
 			cowTimer.stop();
 		}
 	}

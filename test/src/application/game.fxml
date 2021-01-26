@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
@@ -8,39 +13,192 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
+<VBox onKeyPressed="#keyPressed" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: green;" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #72A45D;" VBox.vgrow="ALWAYS">
          <children>
-            
-            <Button fx:id="btnSale" layoutX="84.0" layoutY="344.0" mnemonicParsing="false" onAction="#saleHandler" prefHeight="45.0" prefWidth="70.0" text="Sale" />
-            <ImageView fx:id="imgV1" fitHeight="45.0" fitWidth="49.0" layoutX="527.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgV2" fitHeight="45.0" fitWidth="49.0" layoutX="206.0" layoutY="74.0" onMouseClicked="#buildSheep" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgV3" fitHeight="45.0" fitWidth="49.0" layoutX="527.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="sheepR" layoutX="206.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schaafgehege" wrappingWidth="45.0" />
-            <Text layoutX="527.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pferde  gehege" wrappingWidth="45.0" />
-            <Text layoutX="527.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hunde gehege" wrappingWidth="45.0" />
-            <ListView fx:id="lw" onMouseClicked="#listHandler" prefHeight="337.0" prefWidth="164.0" />
-            <ImageView fx:id="imgV5" fitHeight="114.0" fitWidth="178.0" layoutX="320.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="woodSheep" layoutX="251.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Wood" wrappingWidth="70.0" />
-            <Button fx:id="btnBuy" layoutX="14.0" layoutY="344.0" mnemonicParsing="false" onAction="#buyHandler" prefHeight="45.0" prefWidth="70.0" text="Buy" />
-            <ImageView fx:id="sheep" fitHeight="152.0" fitWidth="178.0" layoutX="144.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-            <Pane layoutX="155.0" layoutY="196.0" prefHeight="200.0" prefWidth="200.0">
+            <Pane fx:id="paneMain" prefHeight="800.0" prefWidth="1200.0">
                <children>
-                  <Text fx:id="woodCow" layoutX="100.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Wood" wrappingWidth="70.0" />
-                  <Text fx:id="metalCow" layoutX="100.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 Metal" wrappingWidth="70.0" />
-                  <Text fx:id="txtCow" layoutX="48.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kuh     gehege" wrappingWidth="45.0" />
-                  <ImageView fx:id="imgV4" fitHeight="45.0" fitWidth="49.0" layoutX="46.0" layoutY="78.0" onMouseClicked="#buildCow" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="cow" fitHeight="243.0" fitWidth="279.0" layoutX="-26.0" layoutY="-29.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="imgMilk" fitHeight="51.0" fitWidth="49.0" layoutX="135.0" layoutY="111.0" onMouseClicked="#collectMilk" pickOnBounds="true" preserveRatio="true" />
+                  <Pane fx:id="paneSheep" layoutX="150.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblGameSheep" alignment="CENTER" layoutX="50.0" prefHeight="30.0" prefWidth="100.0" text="KIND" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameSheep" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameSheepProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ProgressBar fx:id="prgGameSheep" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneCow" layoutX="150.0" layoutY="450.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblGameCow" alignment="CENTER" layoutX="50.0" prefHeight="30.0" prefWidth="100.0" text="KIND" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameCow" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameCowProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ProgressBar fx:id="prgGameCow" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneChicken" layoutX="500.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblGameChicken" alignment="CENTER" layoutX="50.0" prefHeight="30.0" prefWidth="100.0" text="KIND" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameChicken" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameChickenProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ProgressBar fx:id="prgGameChicken" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneDog" layoutX="850.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblGameDog" alignment="CENTER" layoutX="50.0" prefHeight="30.0" prefWidth="100.0" text="KIND" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameDog" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ProgressBar fx:id="prgGameDog" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneHorse" layoutX="850.0" layoutY="450.0" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lblGameHorse" alignment="CENTER" layoutX="50.0" prefHeight="30.0" prefWidth="100.0" text="KIND" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameHorse" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <ProgressBar fx:id="prgGameHorse" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="btnGameHome" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="730.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="HME" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnGameOpt" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="OPT" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnGameHelp" alignment="CENTER" contentDisplay="CENTER" layoutX="1080.0" layoutY="730.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="HLP" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
-            <ImageView fx:id="imgEeg" fitHeight="32.0" fitWidth="30.0" layoutX="335.0" layoutY="152.0" onMouseClicked="#collectEgg" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="imgWolle" fitHeight="51.0" fitWidth="77.0" layoutX="244.0" layoutY="111.0" onMouseClicked="#collectWoll" pickOnBounds="true" preserveRatio="true" />
-            <Pane layoutX="226.0" layoutY="2.0" prefHeight="45.0" prefWidth="414.0">
+            <Pane fx:id="paneTop" prefHeight="80.0" prefWidth="1200.0">
                <children>
-                  <Text fx:id="moneyLabel" layoutX="330.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="70.0" />
-                  <Text fx:id="txtName" layoutX="92.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="229.13671875" />
+                  <Label fx:id="lblTopName" alignment="CENTER" layoutX="550.0" layoutY="5.0" prefHeight="30.0" prefWidth="100.0" text="NAME" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTopLvl" alignment="CENTER" layoutX="760.0" layoutY="35.0" prefHeight="40.0" prefWidth="40.0" text="LVL" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="prgTopLvl" layoutX="450.0" layoutY="45.0" prefHeight="10.0" prefWidth="300.0" progress="0.0" />
+                  <Pane fx:id="paneITopStat" layoutX="1060.0" prefHeight="300.0" prefWidth="140.0">
+                     <children>
+                        <Label fx:id="lblGameMoney" alignment="CENTER_RIGHT" layoutY="20.0" prefHeight="30.0" prefWidth="100.0" text="MONEY" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameMoney" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameWood" alignment="CENTER_RIGHT" layoutY="55.0" prefHeight="30.0" prefWidth="100.0" text="WOOD" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameWood" fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameMetal" alignment="CENTER_RIGHT" layoutY="90.0" prefHeight="30.0" prefWidth="100.0" text="METAL" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameMetal" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameHay" alignment="CENTER_RIGHT" layoutY="125.0" prefHeight="30.0" prefWidth="100.0" text="HAY" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameHay" fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameEgg" alignment="CENTER_RIGHT" layoutY="160.0" prefHeight="30.0" prefWidth="100.0" text="EGG" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameEgg" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameWool" alignment="CENTER_RIGHT" layoutY="195.0" prefHeight="30.0" prefWidth="100.0" text="WOOL" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameWool" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lblGameMilk" alignment="CENTER_RIGHT" layoutY="230.0" prefHeight="30.0" prefWidth="100.0" text="MILK" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imgGameMilk" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="paneOpt" prefHeight="300.0" prefWidth="140.0" visible="false">
+               <children>
+                  <Button fx:id="btnOptOpt" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="1" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnOptSave" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="2" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnOptExit" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="3" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneHome" layoutY="500.0" prefHeight="300.0" prefWidth="140.0" visible="false">
+               <children>
+                  <Button fx:id="btnHomeShop" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="SHOP" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnHome2" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="2" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnHome3" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="3" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneHelp" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="panellll" prefHeight="100.0" prefWidth="100.0" visible="false">
+               <children>
+                  <ListView fx:id="lw2" onMouseClicked="#listHandler" prefHeight="500.0" prefWidth="200.0" />
+                  <Button fx:id="btnSale1" mnemonicParsing="false" onAction="#saleHandler" prefHeight="45.0" prefWidth="70.0" text="Sale" />
+                  <Button fx:id="btnBuy1" mnemonicParsing="false" onAction="#buyHandler" prefHeight="45.0" prefWidth="70.0" text="Buy" />
                </children>
             </Pane>
 

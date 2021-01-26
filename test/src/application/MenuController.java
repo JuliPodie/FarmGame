@@ -3,21 +3,12 @@ package application;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
 public class MenuController {
 	
-	private Parent root;
-	private Stage stage;
-	private Scene scene;
-	
-		
 	public Pane paneMain;
 	public Pane paneGame;
 	public Pane paneNew;
@@ -94,11 +85,7 @@ public class MenuController {
 				break;
 			case "btnNewContinue":
 				GameController.player.setName(txtNewName.getText());
-		        root = FXMLLoader.load(getClass().getResource("game.fxml"));
-		        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-		        scene = new Scene(root);
-		        stage.setScene(scene);
-		        stage.show();
+				Main.main.openGame();
 				break;
 		}
 	}

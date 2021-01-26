@@ -12,46 +12,46 @@ public class User {
 	boolean newGame = false;
 	
 	private String name;
-	private int money;
 	private int lvl;
+	
+	private int money;
+	
 	private int wood;
 	private int metal;
 	private int hay;
-	private int eggs;
+	
+	private int egg;
+	private int wool;
 	private int milk;
-	private int lvlChicken;
+	
 	private int lvlSheep;
 	private int lvlCow;
-	private int amtChicken;
-	private int amtSheep;
-	private int amtCow;
-	private int wool;
-
-	private int colEggs;
-	private int colWool;
-	private int colMilk;
+	private int lvlChicken;
+	private int lvlDog;
+	private int lvlHorse;
 	
-	 public User() {
+	public User() {
 		loadFile();
 		if (name.contentEquals("NewGame")) {
-			milk = 0;
-			colEggs = 0;
-			colWool = 0;
-			setColMilk(0);
-			newGame = true;
-			money = 9000;
+            newGame = true;
+            
 			lvl = 1;
-			wood = 3;
-            metal = 3;
-            hay = 10;
-            eggs = 0;
-            lvlChicken = 1;
-            lvlSheep = 1;
-            lvlCow = 1;
-            amtChicken=1;
-            amtSheep=0;
-            amtCow =0;	
-            wool =0;
+			
+			money = 100;
+			
+			egg = 1;
+			wool = 2;
+			milk = 3;
+			
+			wood = 4;
+            metal = 5;
+            hay = 6;
+            
+            lvlChicken = 0;
+            lvlSheep = 0;
+            lvlCow = 0;
+            lvlDog = 0;
+            lvlHorse = 0; 
 		}
 	}
 	 
@@ -61,12 +61,13 @@ public class User {
 								
 			 bw.write(this.getName());
 			 bw.newLine();
+			 
+			 bw.write(Integer.toString(lvl));
+			 bw.newLine();
 					
 			 bw.write(Integer.toString(money));
 			 bw.newLine();
 					
-			 bw.write(Integer.toString(lvl));
-			 bw.newLine();
 					
 			 bw.write(Integer.toString(wood));
 			 bw.newLine();
@@ -77,25 +78,30 @@ public class User {
 			 bw.write(Integer.toString(hay));
 			 bw.newLine();
 				
-			 bw.write(Integer.toString(eggs));
+			 
+			 bw.write(Integer.toString(wool));
+			 bw.newLine();
+			 
+			 bw.write(Integer.toString(milk));
+			 bw.newLine();
+			 
+			 bw.write(Integer.toString(egg));
 			 bw.newLine();
 					
-			 bw.write(Integer.toString(lvlChicken));
-			 bw.newLine();
 					
 			 bw.write(Integer.toString(lvlSheep));
 			 bw.newLine();
 					
 			 bw.write(Integer.toString(lvlCow));
 			 bw.newLine();
-					
-			 bw.write(Integer.toString(amtChicken));
+			 
+			 bw.write(Integer.toString(lvlChicken));
 			 bw.newLine();
-					
-			 bw.write(Integer.toString(amtSheep));
+			 
+			 bw.write(Integer.toString(lvlDog));
 			 bw.newLine();
-					
-			 bw.write(Integer.toString(amtCow));
+			 
+			 bw.write(Integer.toString(lvlHorse));
 			 bw.newLine();
 					
 			 fw.close();
@@ -115,13 +121,10 @@ public class User {
 			 wood = Integer.parseInt(br.readLine());
 			 metal = Integer.parseInt(br.readLine());
 			 hay = Integer.parseInt(br.readLine());
-			 eggs = Integer.parseInt(br.readLine());
+			 egg = Integer.parseInt(br.readLine());
 			 lvlChicken = Integer.parseInt(br.readLine());
 			 lvlSheep = Integer.parseInt(br.readLine());
 			 lvlCow = Integer.parseInt(br.readLine());
-			 amtChicken = Integer.parseInt(br.readLine());
-			 amtSheep = Integer.parseInt(br.readLine());
-			 amtCow = Integer.parseInt(br.readLine());
 
 			 fr.close();
 			 br.close();
@@ -129,20 +132,21 @@ public class User {
 			 e.printStackTrace();
 		 }
 	 }
-	 
+
+	public boolean isNewGame() {
+		return newGame;
+	}
+
+	public void setNewGame(boolean newGame) {
+		this.newGame = newGame;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getMoney() {
-		return money;
-	}
-
-	public void setMoney(int money) {
-		this.money = money;
 	}
 
 	public int getLvl() {
@@ -151,6 +155,14 @@ public class User {
 
 	public void setLvl(int lvl) {
 		this.lvl = lvl;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
 	public int getWood() {
@@ -176,21 +188,29 @@ public class User {
 	public void setHay(int hay) {
 		this.hay = hay;
 	}
+
+	public int getWool() {
+		return wool;
+	}
 	
-	public int getEggs() {
-		return eggs;
+	public int getEgg() {
+		return egg;
 	}
 
-	public void setEggs(int eggs) {
-		this.eggs = eggs;
+	public void setEgg(int egg) {
+		this.egg = egg;
 	}
 
-	public int getLvlChicken() {
-		return lvlChicken;
+	public void setWool(int wool) {
+		this.wool = wool;
 	}
 
-	public void setLvlChicken(int lvlChicken) {
-		this.lvlChicken = lvlChicken;
+	public int getMilk() {
+		return milk;
+	}
+
+	public void setMilk(int milk) {
+		this.milk = milk;
 	}
 
 	public int getLvlSheep() {
@@ -209,69 +229,81 @@ public class User {
 		this.lvlCow = lvlCow;
 	}
 
-	public int getAmtChicken() {
-		return amtChicken;
+	public int getLvlChicken() {
+		return lvlChicken;
 	}
 
-	public void setAmtChicken(int amtChicken) {
-		this.amtChicken = amtChicken;
+	public void setLvlChicken(int lvlChicken) {
+		this.lvlChicken = lvlChicken;
 	}
 
-	public int getAmtSheep() {
-		return amtSheep;
+	public int getLvlDog() {
+		return lvlDog;
 	}
 
-	public void setAmtSheep(int amtSheep) {
-		this.amtSheep = amtSheep;
+	public void setLvlDog(int lvlDog) {
+		this.lvlDog = lvlDog;
 	}
 
-	public int getAmtCow() {
-		return amtCow;
+	public int getLvlHorse() {
+		return lvlHorse;
 	}
 
-	public void setAmtCow(int amtCow) {
-		this.amtCow = amtCow;
+	public void setLvlHorse(int lvlHorse) {
+		this.lvlHorse = lvlHorse;
+	}
+	
+	
+
+	public String getLvlS() {
+		return Integer.toString(lvl);
 	}
 
-	public int getWool() {
-		return wool;
+	public String getMoneyS() {
+		return Integer.toString(money);
 	}
 
-	public void setWool(int wool) {
-		this.wool = wool;
+	public String getWoodS() {
+		return Integer.toString(wood);
 	}
 
-	public int getColEggs() {
-		return colEggs;
+	public String getMetalS() {
+		return Integer.toString(metal);
 	}
 
-	public void setColEggs(int colEggs) {
-		this.colEggs = colEggs;
+	public String getHayS() {
+		return Integer.toString(hay);
 	}
 
-	public int getColWool() {
-		return colWool;
+	public String getWoolS() {
+		return Integer.toString(wool);
 	}
 
-	public void setColWool(int colWool) {
-		this.colWool = colWool;
+	public String getMilkS() {
+		return Integer.toString(milk);
 	}
 
-	public int getMilk() {
-		return milk;
+	public String getEggS() {
+		return Integer.toString(egg);
 	}
 
-	public void setMilk(int milk) {
-		this.milk = milk;
+	public String getLvlSheepS() {
+		return Integer.toString(lvlSheep);
+	}
+	
+	public String getLvlCowS() {
+		return Integer.toString(lvlCow);
 	}
 
-	public int getColMilk() {
-		return colMilk;
+	public String getLvlChickenS() {
+		return Integer.toString(lvlChicken);
 	}
 
-	public void setColMilk(int colMilk) {
-		this.colMilk = colMilk;
+	public String getLvlDogS() {
+		return Integer.toString(lvlDog);
 	}
 
-
+	public String getLvlHorseS() {
+		return Integer.toString(lvlHorse);
+	}
 }

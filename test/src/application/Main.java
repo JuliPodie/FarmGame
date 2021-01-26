@@ -1,16 +1,6 @@
 package application;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,60 +10,61 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-
 public class Main extends Application {
 	
-
+	static Stage window;
+	static Scene sceneMenu, sceneGame;
+	static Parent rootMenu;
+	static Parent rootGame;
+	
+	static MenuController comMenu;
+	static GameController comGame;
+	
+	static Main main = new Main();
+	
 	public static void main(String[] args) {
 		GameController.player = new User();
-		MenuController conMenu = new MenuController();
-		GameController conGame = new GameController();
-		//e.start();
+		comMenu = new MenuController();
+		comGame = new GameController();
 		launch(args);
 	}
 	
 	@Override
 	public void start(Stage stage) {
-		try {
-			startMenu(stage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		window = stage;
+		openMenu();
+		window.show();
+		window.setResizable(false);
 	}
 	
-	public void startMenu(Stage menuStage) throws Exception {
+	public void openMenu() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("menu.fxml"));
-			Scene scene = new Scene(root,800,500);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			menuStage.setTitle("BRUH");
-			menuStage.setScene(scene);
-			menuStage.show();
-			root.requestFocus();
-			menuStage.setResizable(false);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
+			rootMenu = FXMLLoader.load(getClass().getResource("menu.fxml"));
+			sceneMenu = new Scene(rootMenu,800,500);
+			sceneMenu.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			rootMenu.requestFocus();
+		} catch (IOException e1) {
+			e1.printStackTrace();
 			error(1);
 		}
+		window.setScene(sceneMenu);
+		window.setTitle("Menu");
+		rootMenu.requestFocus();
 	}
 	
-	/*public void startGame(Stage primaryStage) throws Exception {
+	public void openGame() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("game.fxml"));
-			Scene scene = new Scene(root,640,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("Anminal Crossing in schlecht");
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			root.requestFocus();
-			primaryStage.setResizable(false);
-			
-		} catch(Exception e) {
-			e.printStackTrace();
+			rootGame = FXMLLoader.load(getClass().getResource("game.fxml"));
+			sceneGame = new Scene(rootGame,1200,800);
+			sceneGame.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		} catch (IOException e1) {
+			e1.printStackTrace();
 			error(2);
 		}
-	}*/
+		window.setScene(sceneGame);
+		window.setTitle("Game");
+		rootGame.requestFocus();
+	}
 	
 	static void error(int reason)	{		//handles all error windows
 	
