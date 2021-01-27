@@ -307,7 +307,14 @@ public class GameController implements ActionListener {
 
 		switch (idU) {
 		case "btnUpSheep":
+			if (player.getLvlSheep()>=500) {
+				Main.error(6);
+			}
 			if (player.getWood() >= 3 && player.getMetal() >= 1 && player.getHay() >= 2) {
+				if(player.getLvlSheep()==2 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
 				player.setWood(player.getWood() - 3);
 				player.setHay(player.getHay() - 2);
 				player.setLvlSheep(player.getLvlSheep() + 1);
@@ -324,7 +331,14 @@ public class GameController implements ActionListener {
 			break;
 
 		case "btnUpCow":
+			if (player.getLvlCow()>=500) {
+				Main.error(6);
+			}
 			if (player.getWood() >= 2 && player.getMetal() >= 3 && player.getHay() >= 4) {
+				if(player.getLvlCow()==2 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
 				player.setWood(player.getWood() - 2);
 				player.setMetal(player.getMetal() - 3);
 				player.setHay(player.getHay() - 4);
@@ -342,7 +356,15 @@ public class GameController implements ActionListener {
 			break;
 
 		case "btnUpChicken":
+			if (player.getLvlChicken()>=500) {
+				Main.error(6);
+				return;
+			}
 			if (player.getWood() >= 2 && player.getHay() >= 1) {
+				if(player.getLvlChicken()==2 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
 				player.setWood(player.getWood() - 2);
 				player.setHay(player.getHay() - 1);
 				player.setLvlChicken(player.getLvlChicken() + 1);
@@ -360,10 +382,14 @@ public class GameController implements ActionListener {
 
 		case "btnUpDog":
 			if(player.getLvlDog()==5) {
+				Main.error(6);
 				return;
 			}
-			
-			if (player.getWood() >= 3 && player.getMetal() >= 5) {
+			if (player.getWood() >= 3 && player.getMetal() >= 5 && player.getLvl() >= 3) {
+				if(player.getLvlDog()==2 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
 				player.setWood(player.getWood() - 3);
 				player.setMetal(player.getMetal() - 5);
 				player.setLvlDog(player.getLvlDog() + 1);
@@ -371,8 +397,6 @@ public class GameController implements ActionListener {
 					imgGameDog.setImage(imgDog);
 				}
 					//prgGameDog.setVisible(true);
-		
-				
 				switch (player.getLvlDog()) {
 				case 0: dogMuliplier = 1;
 					break;
@@ -387,18 +411,21 @@ public class GameController implements ActionListener {
 				case 5: dogMuliplier = 0.35;
 					break;
 				}
-				
-
-
-				
-				
 			} else {
 				Main.error(4);
 			}
 			break;
 
 		case "btnUpHorse":
-			if (player.getWood() >= 5 && player.getMetal() >= 3 && player.getHay() >= 8) {
+			if(player.getLvlHorse()==10) {
+				Main.error(6);
+				return;
+			}
+			if (player.getWood() >= 5 && player.getMetal() >= 3 && player.getHay() >= 8 && player.getLvl() >= 3) {
+				if(player.getLvlHorse()==2 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
 				player.setWood(player.getWood() - 5);
 				player.setMetal(player.getMetal() - 3);
 				player.setHay(player.getHay() - 8);
@@ -429,7 +456,7 @@ public class GameController implements ActionListener {
 			}
 			break;
 		case "btnShopBuyMetal":
-			if (player.getMoney() >= 25) {
+			if (player.getMoney() >= 25  && player.getLvl() >= 2) {
 				player.setMoney(player.getMoney() - 25);
 				player.setMetal(player.getMetal() + 1);
 			} else {
@@ -437,7 +464,7 @@ public class GameController implements ActionListener {
 			}
 			break;
 		case "btnShopBuyHay":
-			if (player.getMoney() >= 20) {
+			if (player.getMoney() >= 20 && player.getLvl() >= 3) {
 				player.setMoney(player.getMoney() - 20);
 				player.setHay(player.getHay() + 1);
 			} else {
@@ -504,14 +531,11 @@ public class GameController implements ActionListener {
 		if (imgGameChickenProd.isVisible()) {
 			int multiplier = player.getEgg() + 1 * player.getLvlChicken();
 			player.setEgg(multiplier);
-			player.setLvlXp(player.getLvlXp()+20);
+			player.setLvlXp(player.getLvlXp()+10);
 			imgGameChickenProd.setVisible(false);
 			
 			EierUhr.setInitialDelay((int)(delayChicken*10*dogMuliplier));
 			prgEierUhr.setDelay((int)(delayChicken*dogMuliplier));
-			
-			System.out.println((int)(delayChicken*10*dogMuliplier));
-			System.out.println((int)(delayChicken*dogMuliplier));
 			
 			EierUhr.start();
 			prgGameChicken.setProgress(0);
@@ -525,6 +549,7 @@ public class GameController implements ActionListener {
 		if (imgGameSheepProd.isVisible()) {
 			int multiplier = player.getWool() + 1 * player.getLvlSheep();
 			player.setWool(multiplier);
+			player.setLvlXp(player.getLvlXp()+50);
 			imgGameSheepProd.setVisible(false);
 			sheepTimer.setInitialDelay((int)(delaySheep*10*dogMuliplier));
 			prgsheepTimer.setDelay((int)(delaySheep*dogMuliplier));
@@ -539,6 +564,7 @@ public class GameController implements ActionListener {
 		if (imgGameCowProd.isVisible()) {
 			int multiplier = player.getMilk() + 1 * player.getLvlCow();
 			player.setMilk(multiplier);
+			player.setLvlXp(player.getLvlXp()+75);
 			imgGameCowProd.setVisible(false);
 			cowTimer.setInitialDelay((int)(delayCow*10*dogMuliplier));
 			prgcowTimer.setDelay((int)(delayCow*dogMuliplier));

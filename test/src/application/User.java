@@ -11,7 +11,7 @@ public class User {
 	static String path = "src/Save/Save.txt";
 	boolean newGame = false;
 	
-	private double lvlCap = 100;
+	private double lvlCap;
 	
 	private String name;
 	private int lvl;
@@ -141,6 +141,7 @@ public class User {
         
 		lvl = 1;
 		lvlXp = 0;
+		lvlCap = 100;
 		
 		money = 9000;
 		
@@ -194,7 +195,7 @@ public class User {
 			lvlCap = (int) (lvlCap * 1.2);
 			lvl++;
 		}
-		System.out.println(lvlCap);
+	
 		this.lvlXp = lvlXp;
 	}
 

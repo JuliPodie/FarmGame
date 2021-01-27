@@ -88,11 +88,19 @@ public class Main extends Application {
 				break;
 			case 4:
 				alert.setTitle("Error Materials");
-				alert.setContentText("Not enough Materials!");
+				alert.setContentText("Not enough Materials or you are too low level!");
 				break;
 			case 5:
-				alert.setTitle("Error Money");
-				alert.setContentText("Not enough Money!");
+				alert.setTitle("Error Buying");
+				alert.setContentText("Unable to buy!");
+				break;
+			case 6:
+				alert.setTitle("Error Level");
+				alert.setContentText("Already maxed out!");
+				break;
+			case 7:
+				alert.setTitle("Error Level");
+				alert.setContentText("You are underleveled!");
 				break;
 			default:
 				alert.setTitle("Error");

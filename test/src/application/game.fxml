@@ -403,6 +403,16 @@
                         <Font size="50.0" />
                      </font>
                   </Label>
+                  <Label fx:id="lblOpt1111" alignment="CENTER" graphicTextGap="0.0" layoutX="18.0" layoutY="97.0" prefHeight="387.0" prefWidth="456.0" text="Chicken: Drops egg every second&#10;Sheep: Drops wool every 5 seconds&#10;Cow: Drops milk every 7,5 seconds&#10;Every levelup increases their output by 1&#10;&#10;Dog: Increases droprate of animals above&#10;doglvl:&#9;1 = x0,85, 2 = x0,75, 3 = x0,65&#10;&#9;&#9;4 = x0,5, 5 = x0,35 (MAX)&#10;&#10;Horse: Level of horse multiplies the saleprice&#10;(Maxlvl = 10)">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOpt11111" alignment="CENTER" graphicTextGap="0.0" layoutX="467.0" layoutY="-46.0" prefHeight="563.0" prefWidth="327.0" text="Playerlevels:&#10;   1:&#9;Chicken, Cow,&#10;&#9;Wood, Sheep&#10;   2: &#9;Unlocks metal buyoption&#10;   3: &#9;Unlocks hay buyoption&#10;&#9;Unlocks dog, horse&#10;   4:&#9;Unlocks upgrade to level 3&#10;   5:&#9;Unlock all">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children></Pane>
             <Pane fx:id="panellll" disable="true" prefHeight="100.0" prefWidth="100.0" visible="false">
                <children>
