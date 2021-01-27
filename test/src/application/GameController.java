@@ -336,7 +336,7 @@ public class GameController implements ActionListener{
 				}
 				break;
 			case "btnShopSellMetal":
-				if(player.getMoney() >= 1) {
+				if(player.getMetal() >= 1) {
 					player.setMetal(player.getMetal()-1);
 					player.setMoney(player.getMoney()+18);
 				}else {
@@ -344,7 +344,7 @@ public class GameController implements ActionListener{
 				}
 				break;
 			case "btnShopSellHay":
-				if(player.getMoney() >= 1) {
+				if(player.getHay() >= 1) {
 					player.setHay(player.getHay()-1);
 					player.setMoney(player.getMoney()+14);
 				}else {
