@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
-<VBox onKeyPressed="#keyPressed" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
+<VBox fx:id="Vvox" onKeyPressed="#keyPressed" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #72A45D;" VBox.vgrow="ALWAYS">
          <children>
@@ -27,7 +25,7 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgGameSheep" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="imgGameSheepProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameSheepProd" fitHeight="45.0" fitWidth="50.0" layoutY="155.0" onMouseClicked="#collectWoll" pickOnBounds="true" preserveRatio="true" />
                         <ProgressBar fx:id="prgGameSheep" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
@@ -39,7 +37,7 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgGameCow" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="imgGameCowProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameCowProd" fitHeight="45.0" fitWidth="50.0" layoutY="155.0" onMouseClicked="#collectMilk" pickOnBounds="true" preserveRatio="true" />
                         <ProgressBar fx:id="prgGameCow" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
@@ -51,7 +49,7 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgGameChicken" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="imgGameChickenProd" fitHeight="60.0" fitWidth="60.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imgGameChickenProd" fitHeight="50.0" fitWidth="50.0" layoutY="150.0" onMouseClicked="#collectEgg" pickOnBounds="true" preserveRatio="true" />
                         <ProgressBar fx:id="prgGameChicken" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
@@ -224,17 +222,17 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellWood" layoutX="80.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Wood">
+                  <Button fx:id="btnShopSellEgg" layoutX="80.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Egg">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellMetal" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Metal">
+                  <Button fx:id="btnShopSellWool" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Wool">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellHay" layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Hay">
+                  <Button fx:id="btnShopSellMilk" layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Milk">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -254,17 +252,17 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="130.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 7">
+                  <Label alignment="CENTER" layoutX="130.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 5">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="350.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 18">
+                  <Label alignment="CENTER" layoutX="350.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 20">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="570.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 14">
+                  <Label alignment="CENTER" layoutX="570.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 25">
                      <font>
                         <Font size="18.0" />
                      </font>

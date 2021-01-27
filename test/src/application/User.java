@@ -11,7 +11,7 @@ public class User {
 	static String path = "src/Save/Save.txt";
 	boolean newGame = false;
 	
-	private double lvlCap = 10;
+	private double lvlCap = 100;
 	
 	private String name;
 	private int lvl;
@@ -49,7 +49,10 @@ public class User {
 			 
 		 	bw.write(this.getName());
 			bw.newLine();
-			 
+			
+			bw.write(Double.toString(lvlCap));
+			bw.newLine();
+			
 			bw.write(Integer.toString(lvl));
 			bw.newLine();
 			
@@ -105,6 +108,7 @@ public class User {
 				 BufferedReader br = new BufferedReader(fr);){
 			 
 			 name = br.readLine();
+			 lvlCap =Double.parseDouble(br.readLine());
 			 lvl = Integer.parseInt(br.readLine());
 			 lvlXp = Integer.parseInt(br.readLine());
 			 
@@ -138,7 +142,7 @@ public class User {
 		lvl = 1;
 		lvlXp = 0;
 		
-		money = 100;
+		money = 9000;
 		
 		egg = 1;
 		wool = 2;
@@ -185,6 +189,12 @@ public class User {
 	}
 
 	public void setLvlXp(int lvlXp) {
+		if(lvlXp>=lvlCap) {
+			lvlXp = lvlXp - (int) lvlCap;
+			lvlCap = (int) (lvlCap * 1.2);
+			lvl++;
+		}
+		System.out.println(lvlCap);
 		this.lvlXp = lvlXp;
 	}
 
@@ -285,7 +295,6 @@ public class User {
 	}
 	
 	
-
 	public String getLvlS() {
 		return Integer.toString(lvl);
 	}
