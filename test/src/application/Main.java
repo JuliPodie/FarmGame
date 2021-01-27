@@ -38,6 +38,7 @@ public class Main extends Application {
 	}
 	
 	public void openMenu() {
+		GameController.player.loadFile();
 		try {
 			rootMenu = FXMLLoader.load(getClass().getResource("menu.fxml"));
 			sceneMenu = new Scene(rootMenu,800,500);
@@ -63,6 +64,7 @@ public class Main extends Application {
 		}
 		window.setScene(sceneGame);
 		window.setTitle("Game");
+		//window.set
 		rootGame.requestFocus();
 	}
 	
@@ -81,8 +83,16 @@ public class Main extends Application {
 				alert.setContentText("Error loading Game!");
 				break;
 			case 3:
-				alert.setTitle("Error 3");
-				alert.setContentText("!");
+				alert.setTitle("Error Name");
+				alert.setContentText("Please enter a Name!");
+				break;
+			case 4:
+				alert.setTitle("Error Materials");
+				alert.setContentText("Not enough Materials!");
+				break;
+			case 5:
+				alert.setTitle("Error Money");
+				alert.setContentText("Not enough Money!");
 				break;
 			default:
 				alert.setTitle("Error");

@@ -11,8 +11,11 @@ public class User {
 	static String path = "src/Save/Save.txt";
 	boolean newGame = false;
 	
+	private double lvlCap = 10;
+	
 	private String name;
 	private int lvl;
+	private int lvlXp;
 	
 	private int money;
 	
@@ -24,88 +27,74 @@ public class User {
 	private int wool;
 	private int milk;
 	
+
+	private int lvlChicken;
 	private int lvlSheep;
 	private int lvlCow;
-	private int lvlChicken;
 	private int lvlDog;
 	private int lvlHorse;
 	
 	public User() {
+		
 		loadFile();
 		if (name.contentEquals("NewGame")) {
-            newGame = true;
-            
-			lvl = 1;
-			
-			money = 100;
-			
-			egg = 1;
-			wool = 2;
-			milk = 3;
-			
-			wood = 4;
-            metal = 5;
-            hay = 6;
-            
-            lvlChicken = 0;
-            lvlSheep = 0;
-            lvlCow = 0;
-            lvlDog = 0;
-            lvlHorse = 0; 
+            reset();
 		}
 	}
 	 
 	 public void saveFile() {
+		
 		 try (FileWriter fw = new FileWriter(path);
-				 BufferedWriter bw = new BufferedWriter(fw);){
-								
-			 bw.write(this.getName());
-			 bw.newLine();
+			BufferedWriter bw = new BufferedWriter(fw);){
 			 
-			 bw.write(Integer.toString(lvl));
-			 bw.newLine();
+		 	bw.write(this.getName());
+			bw.newLine();
+			 
+			bw.write(Integer.toString(lvl));
+			bw.newLine();
+			
+			bw.write(Integer.toString(lvlXp));
+			bw.newLine();
 					
-			 bw.write(Integer.toString(money));
-			 bw.newLine();
+			bw.write(Integer.toString(money));
+			bw.newLine();
 					
 					
-			 bw.write(Integer.toString(wood));
-			 bw.newLine();
+			bw.write(Integer.toString(wood));
+			bw.newLine();
 
-			 bw.write(Integer.toString(metal));
-			 bw.newLine();
+			bw.write(Integer.toString(metal));
+			bw.newLine();
 					
-			 bw.write(Integer.toString(hay));
-			 bw.newLine();
+			bw.write(Integer.toString(hay));
+			bw.newLine();
 				
 			 
-			 bw.write(Integer.toString(wool));
-			 bw.newLine();
+			bw.write(Integer.toString(egg));
+			bw.newLine();
 			 
-			 bw.write(Integer.toString(milk));
-			 bw.newLine();
+			bw.write(Integer.toString(wool));
+			bw.newLine();
 			 
-			 bw.write(Integer.toString(egg));
-			 bw.newLine();
-					
-					
-			 bw.write(Integer.toString(lvlSheep));
-			 bw.newLine();
-					
-			 bw.write(Integer.toString(lvlCow));
-			 bw.newLine();
+			bw.write(Integer.toString(milk));
+			bw.newLine();
+			 	
+			
+			bw.write(Integer.toString(lvlChicken));
+			bw.newLine();
 			 
-			 bw.write(Integer.toString(lvlChicken));
-			 bw.newLine();
+			bw.write(Integer.toString(lvlSheep));
+			bw.newLine();
+				
+			bw.write(Integer.toString(lvlCow));
+			bw.newLine();
+			
+			bw.write(Integer.toString(lvlDog));
+			bw.newLine();
 			 
-			 bw.write(Integer.toString(lvlDog));
-			 bw.newLine();
+			bw.write(Integer.toString(lvlHorse));
+			bw.newLine();		
 			 
-			 bw.write(Integer.toString(lvlHorse));
-			 bw.newLine();
-					
-			 fw.close();
-			 bw.close();
 		 } catch (IOException e) {
 			 e.printStackTrace();
 		 }
@@ -114,24 +103,58 @@ public class User {
 	 public void loadFile() {
 		 try (FileReader fr = new FileReader(path);
 				 BufferedReader br = new BufferedReader(fr);){
-				
+			 
 			 name = br.readLine();
-			 money = Integer.parseInt(br.readLine());
 			 lvl = Integer.parseInt(br.readLine());
+			 lvlXp = Integer.parseInt(br.readLine());
+			 
+			 money = Integer.parseInt(br.readLine());
+			 
 			 wood = Integer.parseInt(br.readLine());
 			 metal = Integer.parseInt(br.readLine());
 			 hay = Integer.parseInt(br.readLine());
+			 
 			 egg = Integer.parseInt(br.readLine());
+			 wool = Integer.parseInt(br.readLine());
+			 milk = Integer.parseInt(br.readLine());
+			 
 			 lvlChicken = Integer.parseInt(br.readLine());
 			 lvlSheep = Integer.parseInt(br.readLine());
 			 lvlCow = Integer.parseInt(br.readLine());
+			 lvlDog = Integer.parseInt(br.readLine());
+			 lvlHorse = Integer.parseInt(br.readLine());
 
-			 fr.close();
-			 br.close();
 		 } catch (IOException e) {
 			 e.printStackTrace();
 		 }
 	 }
+	 
+	
+	public void reset() {
+		newGame = true;
+		
+		name = "NewGame";
+        
+		lvl = 1;
+		lvlXp = 0;
+		
+		money = 100;
+		
+		egg = 1;
+		wool = 2;
+		milk = 3;
+		
+		wood = 4;
+        metal = 5;
+        hay = 6;
+        
+        lvlChicken = 0;
+        lvlSheep = 0;
+        lvlCow = 0;
+        lvlDog = 0;
+        lvlHorse = 0;
+        saveFile();
+	}
 
 	public boolean isNewGame() {
 		return newGame;
@@ -155,6 +178,14 @@ public class User {
 
 	public void setLvl(int lvl) {
 		this.lvl = lvl;
+	}
+	
+	public int getLvlXp() {
+		return lvlXp;
+	}
+
+	public void setLvlXp(int lvlXp) {
+		this.lvlXp = lvlXp;
 	}
 
 	public int getMoney() {
@@ -257,6 +288,13 @@ public class User {
 
 	public String getLvlS() {
 		return Integer.toString(lvl);
+	}
+	
+	public double getLvlXpD() {
+		double xp;
+		xp = lvl+lvlCap-1;
+		xp = lvlXp/xp;
+		return xp;
 	}
 
 	public String getMoneyS() {

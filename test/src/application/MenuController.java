@@ -9,28 +9,13 @@ import javafx.scene.layout.*;
 
 public class MenuController {
 	
-	public Pane paneMain;
-	public Pane paneGame;
-	public Pane paneNew;
-	public Pane paneOpt;
+	public Pane paneMain, paneGame, paneNew, paneOpt;
 	
-	public Label lblMain;
-	public Button btnMainPlay;
-	public Button btnMainOpt;
+	public Label lblMain, lblGame, lblGameName, lblNew, lblOpt;
 	
-	public Label lblGame;
-	public Label lblGameName;
-	public Button btnGameContinue;
-	public Button btnGameNew;
-	public Button btnGameBack;
+	public Button btnMainPlay, btnMainOpt, btnGameContinue, btnGameNew, btnGameBack, btnNewStart, btnNewBack, btnOptBack;
 	
-	public Label lblNew;
 	public TextField txtNewName;
-	public Button btnNewContinue;
-	public Button btnNewBack;
-	
-	public Label lblOpt;
-	public Button btnOptBack;
 	
 	public void initialize() {
 		
@@ -41,10 +26,10 @@ public class MenuController {
 		
 	}
 	
-	public void loadMenu(ActionEvent e) throws IOException {
-		String id = ((Node) e.getSource()).getId();
+	public void loadMenu(ActionEvent eM) throws IOException {
+		String idM = ((Node) eM.getSource()).getId();
 		
-		switch(id) {
+		switch(idM) {
 			case "btnMainPlay": 
 				if(GameController.player.newGame) {
 					btnGameContinue.setDisable(true);
@@ -66,13 +51,19 @@ public class MenuController {
 				paneGame.setVisible(false);
 				paneMain.setVisible(true);
 				break;
+			case "btnGameContinue": 
+				Main.main.openGame();
+				break;
 			case "btnGameNew": 
 				if(GameController.player.newGame) {
 					paneGame.setVisible(false);
 					txtNewName.setText("");
 					paneNew.setVisible(true);
 				}else {
-					
+					//sure??
+					GameController.player.reset();
+					paneGame.setVisible(false);
+					paneMain.setVisible(true);
 				}
 				break;
 			case "btnNewBack": 
@@ -83,12 +74,15 @@ public class MenuController {
 				paneOpt.setVisible(false);
 				paneMain.setVisible(true);
 				break;
-			case "btnNewContinue":
-				GameController.player.setName(txtNewName.getText());
-				Main.main.openGame();
+			case "btnNewStart":
+				if(txtNewName.getText().equals("")) {
+					Main.error(3);
+				} else {
+					GameController.player.setName(txtNewName.getText());
+					GameController.player.newGame = false;
+					Main.main.openGame();
+				}
 				break;
 		}
 	}
-
-
 }

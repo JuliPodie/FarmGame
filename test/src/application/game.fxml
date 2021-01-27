@@ -77,124 +77,336 @@
                         <ProgressBar fx:id="prgGameHorse" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
-                  <Button fx:id="btnGameHome" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="730.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="HME" textAlignment="CENTER">
+                  <Button fx:id="btnGameHome" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="730.0" mnemonicParsing="false" onAction="#loadPaneGame" prefHeight="50.0" prefWidth="101.0" text="HOME" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnGameOpt" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="OPT" textAlignment="CENTER">
+                  <Button fx:id="btnGameEsc" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadPaneGame" prefHeight="50.0" prefWidth="100.0" text="ESC" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnGameHelp" alignment="CENTER" contentDisplay="CENTER" layoutX="1080.0" layoutY="730.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="HLP" textAlignment="CENTER">
+                  <Button fx:id="btnGameHelp" alignment="CENTER" contentDisplay="CENTER" layoutX="1080.0" layoutY="730.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="?" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneTop" prefHeight="80.0" prefWidth="1200.0">
+            <Pane fx:id="paneTop" layoutX="140.0" prefHeight="80.0" prefWidth="920.0">
                <children>
-                  <Label fx:id="lblTopName" alignment="CENTER" layoutX="550.0" layoutY="5.0" prefHeight="30.0" prefWidth="100.0" text="NAME" textAlignment="CENTER">
+                  <Label fx:id="lblTopName" alignment="CENTER" layoutX="410.0" layoutY="5.0" prefHeight="30.0" prefWidth="100.0" text="NAME" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblTopLvl" alignment="CENTER" layoutX="760.0" layoutY="35.0" prefHeight="40.0" prefWidth="40.0" text="LVL" textAlignment="CENTER">
+                  <Label fx:id="lblTopLvl" alignment="CENTER" layoutX="620.0" layoutY="35.0" prefHeight="40.0" prefWidth="40.0" text="LVL" textAlignment="CENTER">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="prgTopLvl" layoutX="450.0" layoutY="45.0" prefHeight="10.0" prefWidth="300.0" progress="0.0" />
-                  <Pane fx:id="paneITopStat" layoutX="1060.0" prefHeight="300.0" prefWidth="140.0">
+                  <ProgressBar fx:id="prgTopLvl" layoutX="310.0" layoutY="45.0" prefHeight="10.0" prefWidth="300.0" progress="0.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneOpt" layoutY="90.0" prefHeight="210.0" prefWidth="140.0" visible="false">
+               <children>
+                  <Button fx:id="btnEscOpt" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="OPT" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnEscSave" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="SAVE" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnEscExit" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="140.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="EXIT" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneITopStat" layoutX="1060.0" prefHeight="300.0" prefWidth="140.0">
+               <children>
+                  <Label fx:id="lblGameMoney" alignment="CENTER_RIGHT" layoutY="20.0" prefHeight="30.0" prefWidth="100.0" text="MONEY" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameMoney" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameWood" alignment="CENTER_RIGHT" layoutY="55.0" prefHeight="30.0" prefWidth="100.0" text="WOOD" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameWood" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameMetal" alignment="CENTER_RIGHT" layoutY="90.0" prefHeight="30.0" prefWidth="100.0" text="METAL" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameMetal" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameHay" alignment="CENTER_RIGHT" layoutY="125.0" prefHeight="30.0" prefWidth="100.0" text="HAY" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameHay" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameEgg" alignment="CENTER_RIGHT" layoutY="160.0" prefHeight="30.0" prefWidth="100.0" text="EGG" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameEgg" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameWool" alignment="CENTER_RIGHT" layoutY="195.0" prefHeight="30.0" prefWidth="100.0" text="WOOL" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameWool" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lblGameMilk" alignment="CENTER_RIGHT" layoutY="230.0" prefHeight="30.0" prefWidth="100.0" text="MILK" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgGameMilk" fitHeight="30.0" fitWidth="30.0" layoutX="105.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="paneHome" layoutY="570.0" prefHeight="140.0" prefWidth="140.0" visible="false">
+               <children>
+                  <Button fx:id="btnHomeShop" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="SHOP" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnHomeUp" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="90.0" mnemonicParsing="false" onAction="#loadPaneWin" prefHeight="50.0" prefWidth="100.0" text="UPGR" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="paneWinOpt" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
+               <children>
+                  <Label fx:id="lblOpt" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="OPTIONEN">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="200.0" layoutY="300.0" text="Music">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Slider layoutX="350.0" layoutY="315.0" prefHeight="10.0" prefWidth="300.0" />
+               </children></Pane>
+            <Pane fx:id="paneWinShop" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
+               <children>
+                  <Label fx:id="lblOpt1" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="SHOP">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnShopBuyWood" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Buy Wood">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnShopBuyMetal" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Buy Metal">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnShopBuyHay" layoutX="520.0" layoutY="200.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Buy Hay">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnShopSellWood" layoutX="80.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Wood">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnShopSellMetal" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Metal">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnShopSellHay" layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Hay">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label alignment="CENTER" layoutX="130.0" layoutY="170.0" prefHeight="30.0" prefWidth="100.0" text="Price : 10">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="350.0" layoutY="170.0" prefHeight="30.0" prefWidth="100.0" text="Price : 25">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="570.0" layoutY="170.0" prefHeight="30.0" prefWidth="100.0" text="Price : 20">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="130.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="350.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 18">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="570.0" layoutY="320.0" prefHeight="30.0" prefWidth="100.0" text="Sell for : 14">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Pane fx:id="paneWinUp" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
+               <children>
+                  <Label fx:id="lblOpt11" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="UPGRADE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="paneUpSheep" layoutX="80.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="lblGameMoney" alignment="CENTER_RIGHT" layoutY="20.0" prefHeight="30.0" prefWidth="100.0" text="MONEY" textAlignment="CENTER">
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imgGameMoney" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameWood" alignment="CENTER_RIGHT" layoutY="55.0" prefHeight="30.0" prefWidth="100.0" text="WOOD" textAlignment="CENTER">
+                        <Label fx:id="lblUpLvlSheep" alignment="CENTER_RIGHT" layoutX="150.0" prefHeight="50.0" prefWidth="50.0" text="LVL" textAlignment="RIGHT">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imgGameWood" fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameMetal" alignment="CENTER_RIGHT" layoutY="90.0" prefHeight="30.0" prefWidth="100.0" text="METAL" textAlignment="CENTER">
+                        <Button fx:id="btnUpSheep" layoutY="50.0" mnemonicParsing="false" onAction="#upgradePet" prefHeight="50.0" prefWidth="200.0" text="Level Up Sheep">
                            <font>
                               <Font size="18.0" />
                            </font>
-                        </Label>
-                        <ImageView fx:id="imgGameMetal" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameHay" alignment="CENTER_RIGHT" layoutY="125.0" prefHeight="30.0" prefWidth="100.0" text="HAY" textAlignment="CENTER">
+                        </Button>
+                        <Label alignment="CENTER" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" text="Req: 3 Wood, 1 Metal, 2 Hay">
                            <font>
-                              <Font size="18.0" />
+                              <Font size="14.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imgGameHay" fitHeight="40.0" fitWidth="40.0" layoutX="110.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameEgg" alignment="CENTER_RIGHT" layoutY="160.0" prefHeight="30.0" prefWidth="100.0" text="EGG" textAlignment="CENTER">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="imgGameEgg" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameWool" alignment="CENTER_RIGHT" layoutY="195.0" prefHeight="30.0" prefWidth="100.0" text="WOOL" textAlignment="CENTER">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="imgGameWool" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="lblGameMilk" alignment="CENTER_RIGHT" layoutY="230.0" prefHeight="30.0" prefWidth="100.0" text="MILK" textAlignment="CENTER">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <ImageView fx:id="imgGameMilk" fitHeight="40.0" fitWidth="40.0" layoutX="100.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
-               </children>
-            </Pane>
-            <Pane fx:id="paneOpt" prefHeight="300.0" prefWidth="140.0" visible="false">
+                  <Pane fx:id="paneUpCow" layoutX="80.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUpLvlCow" alignment="CENTER_RIGHT" layoutX="150.0" prefHeight="50.0" prefWidth="50.0" text="LVL" textAlignment="RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnUpCow" layoutY="50.0" mnemonicParsing="false" onAction="#upgradePet" prefHeight="50.0" prefWidth="200.0" text="Level Up Cow">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" text="Req: 2 Wood, 3 Metal, 4 Hay">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneUpChicken" layoutX="300.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUpLvlChicken" alignment="CENTER_RIGHT" layoutX="150.0" prefHeight="50.0" prefWidth="50.0" text="LVL" textAlignment="RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnUpChicken" layoutY="50.0" mnemonicParsing="false" onAction="#upgradePet" prefHeight="50.0" prefWidth="200.0" text="Level Up Chicken">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" text="Req: 2 Wood, 1 Hay">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneUpDog" layoutX="520.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUpLvlDog" alignment="CENTER_RIGHT" layoutX="150.0" prefHeight="50.0" prefWidth="50.0" text="LVL" textAlignment="RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnUpDog" layoutY="50.0" mnemonicParsing="false" onAction="#upgradePet" prefHeight="50.0" prefWidth="200.0" text="Level Up Dog">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" text="Req: 3 Wood, 5 Metal">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneUpSheep1" layoutX="520.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblUpLvlHorse" alignment="CENTER_RIGHT" layoutX="150.0" prefHeight="50.0" prefWidth="50.0" text="LVL" textAlignment="RIGHT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnUpHorse" layoutY="50.0" mnemonicParsing="false" onAction="#upgradePet" prefHeight="50.0" prefWidth="200.0" text="Level Up Horse">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutY="100.0" prefHeight="30.0" prefWidth="200.0" text="Req: 5 Wood, 3 Metal, 8 Hay">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children></Pane>
+            <Pane fx:id="paneWinHelp" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
                <children>
-                  <Button fx:id="btnOptOpt" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="1" textAlignment="CENTER">
+                  <Label fx:id="lblOpt111" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="HELP">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="50.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="btnOptSave" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="2" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnOptExit" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="3" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="paneHome" layoutY="500.0" prefHeight="300.0" prefWidth="140.0" visible="false">
-               <children>
-                  <Button fx:id="btnHomeShop" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="SHOP" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnHome2" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="2" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnHome3" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="160.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="3" textAlignment="CENTER">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane fx:id="paneHelp" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="panellll" prefHeight="100.0" prefWidth="100.0" visible="false">
+                  </Label>
+               </children></Pane>
+            <Pane fx:id="panellll" disable="true" prefHeight="100.0" prefWidth="100.0" visible="false">
                <children>
                   <ListView fx:id="lw2" onMouseClicked="#listHandler" prefHeight="500.0" prefWidth="200.0" />
                   <Button fx:id="btnSale1" mnemonicParsing="false" onAction="#saleHandler" prefHeight="45.0" prefWidth="70.0" text="Sale" />
