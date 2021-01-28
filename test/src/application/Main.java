@@ -3,12 +3,15 @@ package application;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 	
@@ -35,6 +38,7 @@ public class Main extends Application {
 		openMenu();
 		window.show();
 		window.setResizable(false);
+		
 	}
 	
 	public void openMenu() {
@@ -49,7 +53,15 @@ public class Main extends Application {
 			error(1);
 		}
 		window.setScene(sceneMenu);
+	
 		window.setTitle("Menu");
+		window.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent event) {
+		        Platform.exit();
+		        System.exit(0);
+		    }
+		});
 		rootMenu.requestFocus();
 	}
 	
@@ -63,7 +75,15 @@ public class Main extends Application {
 			error(2);
 		}
 		window.setScene(sceneGame);
+		
 		window.setTitle("Game");
+		window.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		    @Override
+		    public void handle(WindowEvent event) {
+		        Platform.exit();
+		        System.exit(0);
+		    }
+		});
 		//window.set
 		rootGame.requestFocus();
 	}
@@ -109,4 +129,5 @@ public class Main extends Application {
 		}
 		alert.showAndWait();
 	}
+
 }

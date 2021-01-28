@@ -139,7 +139,7 @@ public class User {
 		
 		name = "NewGame";
         
-		lvl = 1;
+		lvl = 5;
 		lvlXp = 0;
 		lvlCap = 100;
 		
