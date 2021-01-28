@@ -177,11 +177,11 @@ public class GameController implements ActionListener {
 		if (player.getLvlDog() >= 1) {
 			imgGameDog.setImage(imgDog);
 			prgGameDog.setVisible(true);
-			sheepTimer.setDelay((int)(delaySheep*10*dogMuliplier));
+			sheepTimer.setInitialDelay((int)(delaySheep*10*dogMuliplier));
 			prgsheepTimer.setDelay((int)(delaySheep*dogMuliplier));
-			cowTimer.setDelay((int)(delayCow*10*dogMuliplier));
+			cowTimer.setInitialDelay((int)(delayCow*10*dogMuliplier));
 			prgcowTimer.setDelay((int)(delayCow*dogMuliplier));
-			EierUhr.setDelay((int)(delayChicken*10*dogMuliplier));
+			EierUhr.setInitialDelay((int)(delayChicken*10*dogMuliplier));
 			prgEierUhr.setDelay((int)(delayChicken*dogMuliplier));
 		}
 	
@@ -311,10 +311,15 @@ public class GameController implements ActionListener {
 				Main.error(6);
 			}
 			if (player.getWood() >= 3 && player.getMetal() >= 1 && player.getHay() >= 2) {
-				if(player.getLvlSheep()==2 && player.getLvl() < 4) {
+				if(player.getLvlSheep()==1 && player.getLvl() < 4) {
 					Main.error(7);
 					return;
 				}
+				if(player.getLvlSheep()==3 && player.getLvl() < 5) {
+					Main.error(7);
+					return;
+				}
+				
 				player.setWood(player.getWood() - 3);
 				player.setHay(player.getHay() - 2);
 				player.setLvlSheep(player.getLvlSheep() + 1);
@@ -335,10 +340,15 @@ public class GameController implements ActionListener {
 				Main.error(6);
 			}
 			if (player.getWood() >= 2 && player.getMetal() >= 3 && player.getHay() >= 4) {
-				if(player.getLvlCow()==2 && player.getLvl() < 4) {
+				if(player.getLvlCow()==1 && player.getLvl() < 4) {
 					Main.error(7);
 					return;
 				}
+				if(player.getLvlCow()==3 && player.getLvl() < 5) {
+					Main.error(7);
+					return;
+				}
+				
 				player.setWood(player.getWood() - 2);
 				player.setMetal(player.getMetal() - 3);
 				player.setHay(player.getHay() - 4);
@@ -361,10 +371,15 @@ public class GameController implements ActionListener {
 				return;
 			}
 			if (player.getWood() >= 2 && player.getHay() >= 1) {
-				if(player.getLvlChicken()==2 && player.getLvl() < 4) {
+				if(player.getLvlChicken()==1 && player.getLvl() < 4) {
 					Main.error(7);
 					return;
 				}
+				if(player.getLvlChicken()==3 && player.getLvl() < 5) {
+					Main.error(7);
+					return;
+				}
+				
 				player.setWood(player.getWood() - 2);
 				player.setHay(player.getHay() - 1);
 				player.setLvlChicken(player.getLvlChicken() + 1);
@@ -386,10 +401,15 @@ public class GameController implements ActionListener {
 				return;
 			}
 			if (player.getWood() >= 3 && player.getMetal() >= 5 && player.getLvl() >= 3) {
-				if(player.getLvlDog()==2 && player.getLvl() < 4) {
+				if(player.getLvlDog()==1 && player.getLvl() < 4) {
 					Main.error(7);
 					return;
 				}
+				if(player.getLvlDog()==3 && player.getLvl() < 5) {
+					Main.error(7);
+					return;
+				}
+				
 				player.setWood(player.getWood() - 3);
 				player.setMetal(player.getMetal() - 5);
 				player.setLvlDog(player.getLvlDog() + 1);
@@ -422,7 +442,11 @@ public class GameController implements ActionListener {
 				return;
 			}
 			if (player.getWood() >= 5 && player.getMetal() >= 3 && player.getHay() >= 8 && player.getLvl() >= 3) {
-				if(player.getLvlHorse()==2 && player.getLvl() < 4) {
+				if(player.getLvlHorse()==1 && player.getLvl() < 4) {
+					Main.error(7);
+					return;
+				}
+				if(player.getLvlHorse()==3 && player.getLvl() < 5) {
 					Main.error(7);
 					return;
 				}
