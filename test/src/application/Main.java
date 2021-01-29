@@ -122,6 +122,10 @@ public class Main extends Application {
 				alert.setTitle("Error Level");
 				alert.setContentText("You are underleveled!");
 				break;
+			case 8:
+				alert.setTitle("Error Loading Savegame");
+				alert.setContentText("The Save.txt is missing in /Save/Save.txt");
+				break;
 			default:
 				alert.setTitle("Error");
 				alert.setContentText("Unknown error occured!");

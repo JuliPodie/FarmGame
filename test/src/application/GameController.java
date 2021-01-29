@@ -3,18 +3,12 @@ package application;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.Timer;
 
 public class GameController implements ActionListener {
@@ -34,8 +28,6 @@ public class GameController implements ActionListener {
 	Timer prgcowTimer = new Timer(delayCow, this);
 
 	Boolean newGame = true;
-
-	ObservableList<String> list = FXCollections.observableArrayList();
 
 	static User player;
 
@@ -62,24 +54,6 @@ public class GameController implements ActionListener {
 	public Text t;
 
 	private int sellEgg = 5, sellWool = 20, sellMilk = 25;
-
-	public ListView<String> lw;
-
-	@FXML
-	void keyPressed(KeyEvent event) {
-		switch (event.getCode()) {
-		case UP:
-			break;
-		case DOWN:
-			break;
-		case LEFT:
-			break;
-		case RIGHT:
-			break;
-		default:
-			break;
-		}
-	}
 
 	public void initialize() {
 

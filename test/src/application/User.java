@@ -8,7 +8,9 @@ import java.io.IOException;
 
 public class User {
 	
-	static String path = "src/Save/Save.txt";
+	static String path = "src/Save/Save.txt"; //für IDE
+	//static String path = "./Save/Save.txt"; //für jar
+	
 	boolean newGame = false;
 	
 	private double lvlCap;
@@ -99,7 +101,7 @@ public class User {
 			bw.newLine();		
 			 
 		 } catch (IOException e) {
-			 e.printStackTrace();
+			 Main.error(8);
 		 }
 	 }
 		
@@ -129,7 +131,7 @@ public class User {
 			 lvlHorse = Integer.parseInt(br.readLine());
 
 		 } catch (IOException e) {
-			 e.printStackTrace();
+			 Main.error(8);
 		 }
 	 }
 	 

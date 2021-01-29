@@ -123,7 +123,7 @@
                   </Button>
                </children>
             </Pane>
-            <Pane fx:id="paneITopStat" layoutX="1060.0" prefHeight="300.0" prefWidth="140.0">
+            <Pane layoutX="1060.0" prefHeight="300.0" prefWidth="140.0">
                <children>
                   <Label fx:id="lblGameMoney" alignment="CENTER_RIGHT" layoutY="20.0" prefHeight="30.0" prefWidth="100.0" text="MONEY" textAlignment="CENTER">
                      <font>
@@ -185,7 +185,7 @@
             </Pane>
             <Pane fx:id="paneWinOpt" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
                <children>
-                  <Label fx:id="lblOpt" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="OPTIONEN">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="OPTIONEN">
                      <font>
                         <Font size="50.0" />
                      </font>
@@ -199,7 +199,7 @@
                </children></Pane>
             <Pane fx:id="paneWinShop" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
                <children>
-                  <Label fx:id="lblOpt1" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="SHOP">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="SHOP">
                      <font>
                         <Font size="50.0" />
                      </font>
@@ -219,17 +219,17 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellEgg" layoutX="80.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Egg">
+                  <Button layoutX="80.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Egg">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellWool" layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Wool">
+                  <Button layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Wool">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnShopSellMilk" layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Milk">
+                  <Button layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#shop" prefHeight="50.0" prefWidth="200.0" text="Sell Milk">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -267,12 +267,12 @@
                </children></Pane>
             <Pane fx:id="paneWinUp" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
                <children>
-                  <Label fx:id="lblOpt11" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="UPGRADE">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="UPGRADE">
                      <font>
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Pane fx:id="paneUpSheep" layoutX="80.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
+                  <Pane layoutX="80.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
@@ -296,7 +296,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneUpCow" layoutX="80.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
+                  <Pane layoutX="80.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
@@ -320,7 +320,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneUpChicken" layoutX="300.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0">
+                  <Pane layoutX="300.0" layoutY="200.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
@@ -344,7 +344,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneUpDog" layoutX="520.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
+                  <Pane layoutX="520.0" layoutY="100.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
@@ -368,7 +368,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneUpSheep1" layoutX="520.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
+                  <Pane layoutX="520.0" layoutY="300.0" prefHeight="150.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="150.0" text="Level:">
                            <font>
@@ -395,22 +395,22 @@
                </children></Pane>
             <Pane fx:id="paneWinHelp" layoutX="200.0" layoutY="150.0" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" visible="false">
                <children>
-                  <Label fx:id="lblOpt111" alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="HELP">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="20.0" prefHeight="50.0" prefWidth="400.0" text="HELP">
                      <font>
                         <Font size="50.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOpt1111" alignment="CENTER" graphicTextGap="0.0" layoutX="18.0" layoutY="97.0" prefHeight="387.0" prefWidth="456.0" text="Chicken: Drops egg every second&#10;Sheep: Drops wool every 5 seconds&#10;Cow: Drops milk every 7,5 seconds&#10;Every levelup increases their output by 1&#10;&#10;Dog: Increases droprate of animals above&#10;doglvl:&#9;1 = x0,85, 2 = x0,75, 3 = x0,65&#10;&#9;&#9;4 = x0,5, 5 = x0,35 (MAX)&#10;&#10;Horse: Level of horse multiplies the saleprice&#10;(Maxlvl = 10)">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="18.0" layoutY="97.0" prefHeight="387.0" prefWidth="456.0" text="Chicken: Drops egg every second&#10;Sheep: Drops wool every 5 seconds&#10;Cow: Drops milk every 7,5 seconds&#10;Every levelup increases their output by 1&#10;&#10;Dog: Increases droprate of animals above&#10;doglvl:&#9;1 = x0,85, 2 = x0,75, 3 = x0,65&#10;&#9;&#9;4 = x0,5, 5 = x0,35 (MAX)&#10;&#10;Horse: Level of horse multiplies the saleprice&#10;(Maxlvl = 10)">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOpt11111" alignment="CENTER" graphicTextGap="0.0" layoutX="467.0" layoutY="-46.0" prefHeight="563.0" prefWidth="327.0" text="Playerlevels:&#10;   1:&#9;Chicken, Cow,&#10;&#9;Wood, Sheep&#10;   2: &#9;Unlocks metal buyoption&#10;   3: &#9;Unlocks hay buyoption&#10;&#9;Unlocks dog, horse&#10;   4:&#9;Unlocks upgrade to level 3&#10;   5:&#9;Unlock all">
+                  <Label alignment="CENTER" graphicTextGap="0.0" layoutX="467.0" layoutY="-46.0" prefHeight="563.0" prefWidth="327.0" text="Playerlevels:&#10;   1:&#9;Chicken, Cow,&#10;&#9;Wood, Sheep&#10;   2: &#9;Unlocks metal buyoption&#10;   3: &#9;Unlocks hay buyoption&#10;&#9;Unlocks dog, horse&#10;   4:&#9;Unlocks upgrade to level 3&#10;   5:&#9;Unlock all">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btncheat" layoutX="715.0" layoutY="459.0" mnemonicParsing="false" onAction="#resetCheat" text="CheatPOG" />
+                  <Button layoutX="715.0" layoutY="459.0" mnemonicParsing="false" onAction="#resetCheat" text="CheatPOG" />
                </children></Pane>
          </children>
     </AnchorPane>
