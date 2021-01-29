@@ -139,19 +139,19 @@ public class User {
 		
 		name = "NewGame";
         
-		lvl = 5;
+		lvl = 1;
 		lvlXp = 0;
 		lvlCap = 100;
 		
-		money = 9000;
+		money = 100;
 		
-		egg = 1;
-		wool = 2;
-		milk = 3;
+		egg = 0;
+		wool = 0;
+		milk = 0;
 		
-		wood = 4;
-        metal = 5;
-        hay = 6;
+		wood = 2;
+        metal = 0;
+        hay = 1;
         
         lvlChicken = 0;
         lvlSheep = 0;
@@ -160,7 +160,20 @@ public class User {
         lvlHorse = 0;
         saveFile();
 	}
-
+	public void cheat() {
+		newGame = true;
+		
+		name = "NewGame";
+        
+		lvl = 5;
+		money = 9000;
+		
+		wood = 999;
+        metal = 999;
+        hay = 999;
+        
+        saveFile();
+	}
 	public boolean isNewGame() {
 		return newGame;
 	}

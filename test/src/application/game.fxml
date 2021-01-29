@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="Vvox" onKeyPressed="#keyPressed" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
+<VBox onKeyPressed="#keyPressed" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #72A45D;" VBox.vgrow="ALWAYS">
          <children>
@@ -26,7 +25,7 @@
                         </Label>
                         <ImageView fx:id="imgGameSheep" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="imgGameSheepProd" fitHeight="45.0" fitWidth="50.0" layoutY="155.0" onMouseClicked="#collectWoll" pickOnBounds="true" preserveRatio="true" />
-                        <ProgressBar fx:id="prgGameSheep" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                        <ProgressBar fx:id="prgGameSheep" layoutX="50.0" layoutY="170.0" prefHeight="10.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="paneCow" layoutX="150.0" layoutY="450.0" prefHeight="200.0" prefWidth="200.0">
@@ -38,7 +37,7 @@
                         </Label>
                         <ImageView fx:id="imgGameCow" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="imgGameCowProd" fitHeight="45.0" fitWidth="50.0" layoutY="155.0" onMouseClicked="#collectMilk" pickOnBounds="true" preserveRatio="true" />
-                        <ProgressBar fx:id="prgGameCow" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                        <ProgressBar fx:id="prgGameCow" layoutX="50.0" layoutY="170.0" prefHeight="10.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="paneChicken" layoutX="500.0" layoutY="300.0" prefHeight="200.0" prefWidth="200.0">
@@ -50,7 +49,7 @@
                         </Label>
                         <ImageView fx:id="imgGameChicken" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fx:id="imgGameChickenProd" fitHeight="50.0" fitWidth="50.0" layoutY="150.0" onMouseClicked="#collectEgg" pickOnBounds="true" preserveRatio="true" />
-                        <ProgressBar fx:id="prgGameChicken" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
+                        <ProgressBar fx:id="prgGameChicken" layoutX="50.0" layoutY="158.0" prefHeight="10.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="paneDog" layoutX="850.0" layoutY="150.0" prefHeight="200.0" prefWidth="200.0">
@@ -61,7 +60,6 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgGameDog" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <ProgressBar fx:id="prgGameDog" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
                   <Pane fx:id="paneHorse" layoutX="850.0" layoutY="450.0" prefHeight="200.0" prefWidth="200.0">
@@ -72,7 +70,6 @@
                            </font>
                         </Label>
                         <ImageView fx:id="imgGameHorse" fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <ProgressBar fx:id="prgGameHorse" layoutX="50.0" layoutY="170.0" prefHeight="5.0" prefWidth="100.0" progress="0.0" />
                      </children>
                   </Pane>
                   <Button fx:id="btnGameHome" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="730.0" mnemonicParsing="false" onAction="#loadPaneGame" prefHeight="50.0" prefWidth="101.0" text="HOME" textAlignment="CENTER">
@@ -104,7 +101,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="prgTopLvl" layoutX="310.0" layoutY="45.0" prefHeight="10.0" prefWidth="300.0" progress="0.0" />
+                  <ProgressBar fx:id="prgTopLvl" layoutX="310.0" layoutY="45.0" prefHeight="15.0" prefWidth="300.0" progress="0.0" />
                </children>
             </Pane>
             <Pane fx:id="paneOpt" layoutY="90.0" prefHeight="210.0" prefWidth="140.0" visible="false">
@@ -413,6 +410,7 @@
                         <Font size="23.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btncheat" layoutX="715.0" layoutY="459.0" mnemonicParsing="false" onAction="#resetCheat" text="CheatPOG" />
                </children></Pane>
          </children>
     </AnchorPane>

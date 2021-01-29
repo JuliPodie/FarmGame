@@ -48,13 +48,13 @@ public class GameController implements ActionListener {
 
 	public Button btnGameHome, btnGameEsc, btnGameHelp, btnEscOpt, btnEscSave, btnEscExit, btnHomeShop, btnHomeUp,
 			btnUpSheep, btnUpCow, btnUpChicken, btnUpDog, btnUpHorse, btnShopBuyWood, btnShopBuyMetal, btnShopBuyHay,
-			btnShopSellWood, btnShopSellMetal, btnShopSellHay;
+			btnShopSellWood, btnShopSellMetal, btnShopSellHay, btnCheat;
 
 	public ImageView imgGameSheep, imgGameSheepProd, imgGameCow, imgGameCowProd, imgGameChicken, imgGameChickenProd,
 			imgGameDog, imgGameHorse, imgGameMoney, imgGameWood, imgGameMetal, imgGameHay, imgGameEgg, imgGameWool,
 			imgGameMilk, imgColEgg, imgColWool, imgColMilk;
 
-	public ProgressBar prgTopLvl, prgGameSheep, prgGameCow, prgGameChicken, prgGameDog, prgGameHorse;
+	public ProgressBar prgTopLvl, prgGameSheep, prgGameCow, prgGameChicken;
 
 	public Image imgScrew, imgSheep, imgCow, imgHorse, imgChicken, imgDog, imgMoney, imgWood, imgMetal, imgHay, imgEgg,
 			imgWool, imgMilk, imgWoola, imgMilka, imgEgga;
@@ -132,8 +132,7 @@ public class GameController implements ActionListener {
 		prgGameSheep.setVisible(false);
 		prgGameCow.setVisible(false);
 		prgGameChicken.setVisible(false);
-		prgGameDog.setVisible(false);
-		prgGameHorse.setVisible(false);
+
 
 		lblTopName.setText(player.getName());
 
@@ -179,7 +178,6 @@ public class GameController implements ActionListener {
 
 		if (player.getLvlDog() >= 1) {
 			imgGameDog.setImage(imgDog);
-			prgGameDog.setVisible(true);
 			sheepTimer.setInitialDelay((int) (delaySheep * 10 * dogMuliplier));
 			prgsheepTimer.setDelay((int) (delaySheep * dogMuliplier));
 			cowTimer.setInitialDelay((int) (delayCow * 10 * dogMuliplier));
@@ -190,26 +188,25 @@ public class GameController implements ActionListener {
 
 		if (player.getLvlHorse() >= 1) {
 			imgGameHorse.setImage(imgHorse);
-			prgGameHorse.setVisible(true);
 		}
 		if (player.getLvlSheep() >= 1) {
 			imgGameSheep.setImage(imgSheep);
 			prgGameSheep.setVisible(true);
-			prgGameSheep.setProgress(0.1);
+			prgGameSheep.setProgress(0);
 			sheepTimer.start();
 			prgsheepTimer.start();
 		}
 		if (player.getLvlCow() >= 1) {
 			imgGameCow.setImage(imgCow);
 			prgGameCow.setVisible(true);
-			prgGameCow.setProgress(0.1);
+			prgGameCow.setProgress(0);
 			cowTimer.start();
 			prgcowTimer.start();
 		}
 		if (player.getLvlChicken() >= 1) {
 			imgGameChicken.setImage(imgChicken);
 			prgGameChicken.setVisible(true);
-			prgGameChicken.setProgress(0.1);
+			prgGameChicken.setProgress(0);
 			EierUhr.start();
 			prgEierUhr.start();
 		}
@@ -567,7 +564,7 @@ public class GameController implements ActionListener {
 			prgEierUhr.setDelay((int) (delayChicken * dogMuliplier));
 
 			EierUhr.start();
-			prgGameChicken.setProgress(0.1);
+			prgGameChicken.setProgress(0);
 			prgEierUhr.start();
 			update();
 		}
@@ -583,7 +580,7 @@ public class GameController implements ActionListener {
 			sheepTimer.setInitialDelay((int) (delaySheep * 10 * dogMuliplier));
 			prgsheepTimer.setDelay((int) (delaySheep * dogMuliplier));
 			sheepTimer.start();
-			prgGameSheep.setProgress(0.1);
+			prgGameSheep.setProgress(0);
 			prgsheepTimer.start();
 			update();
 		}
@@ -598,7 +595,7 @@ public class GameController implements ActionListener {
 			cowTimer.setInitialDelay((int) (delayCow * 10 * dogMuliplier));
 			prgcowTimer.setDelay((int) (delayCow * dogMuliplier));
 			cowTimer.start();
-			prgGameCow.setProgress(0.1);
+			prgGameCow.setProgress(0);
 			prgcowTimer.start();
 			update();
 		}
@@ -631,6 +628,10 @@ public class GameController implements ActionListener {
 		}
 		update();
 		
+	}
+	public void resetCheat() {
+		player.cheat();
+		update();
 	}
 
 }
